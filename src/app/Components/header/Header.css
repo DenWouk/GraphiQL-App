@@ -39,7 +39,6 @@
 .header {
     position: sticky;
     top: 0;
-    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,6 +46,11 @@
     padding: 0 20px;
     border-bottom: var(--border1);
     background-color: var(--background-color1);
+    transition: 0.2s height, 0.4s background-color ease-in-out;
+}
+
+.header.sticky {
+    height: 35px;
 }
 
 .header-title {
