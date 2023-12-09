@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import Header from '../src/app/Components/Header';
+import Header from '../src/app/Components/header/Header';
 
 describe('Tests for the Header component', () => {
   it('Renders the relevant data', () => {
     render(<Header />);
     expect(
-      screen.getByRole('heading', { name: 'hello world' })
+      screen.getByRole('heading', { name: 'GraphiQL' })
     ).toBeInTheDocument();
   });
 });
