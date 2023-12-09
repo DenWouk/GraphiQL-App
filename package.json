@@ -47,7 +47,7 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{ts,tsx}":  [
+    "*.{ts,tsx}": [
       "eslint --fix",
       "npm run format:fix"
     ]

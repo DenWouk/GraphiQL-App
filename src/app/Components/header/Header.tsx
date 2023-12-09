@@ -1,36 +1,37 @@
 import Link from 'next/link';
 import './Header.css';
+import { LanguageSelector } from '../language-selector/LanguageSelector';
 
 const Header = () => {
   return (
-    <header className={'header'}>
-      <h1 className="header-title">GraphiQL</h1>
-
-      <div className="selectors-container">
-        {/* <ThemeSelector />
-        <LanguageSelector /> */}
-      </div>
+    <header className="header">
+      <Link href="/">
+        <h1 className="header-title">GraphiQL</h1>
+      </Link>
 
       <nav className="nav">
-        <Link className={'nav-link'} href="/">
+        <Link className="nav-link" href="/">
           Main
-          {/* {languages.startPage[state.languageIndex]} */}
         </Link>
 
-        <button className={'nav-link'}>1 </button>
-
-        <Link className={'nav-link'} href="profile">
-          2{' '}
-        </Link>
-
-        <Link className={'nav-link'} href="/logout">
-          3{' '}
+        <Link className="nav-link" href="about">
+          About
         </Link>
       </nav>
 
-      {/* <MediaQuery maxWidth={640}>
-        <BurgerMenu />
-      </MediaQuery> */}
+      <div className="header-btns">
+        <div className="auth-btns">
+          <Link href="authorization">
+            <button className="auth-btn">Sign In</button>
+          </Link>
+
+          <button className="auth-btn">Logout</button>
+        </div>
+
+        <div className="selectors-container">
+          <LanguageSelector />
+        </div>
+      </div>
     </header>
   );
 };

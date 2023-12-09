@@ -1,0 +1,14 @@
+.language-select {
+    width: 40px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+    text-align: center;
+    background: none;
+    border: solid 2px grey;
+    border-radius: 3px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
