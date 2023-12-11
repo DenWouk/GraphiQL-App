@@ -1,20 +1,16 @@
-import Link from 'next/link';
+import AuthPageLink from '../components/links/AuthPageLink';
+import MainPageLink from '../components/links/MainPageLink';
 import './about.css';
 
 function About() {
   return (
-    <>
+    <main className="main">
       <div className="welcome-page-container">
         <h2 className="welcome-page-title">Welcome to our application</h2>
 
         <div className="welcome-page-links">
-          <Link href="authorization" className="welcome-page-link">
-            <span className="link-arrow">Sign In / Sign Up ❯</span>
-          </Link>
-
-          <Link href="/" className="welcome-page-link">
-            <span className="link-arrow">To Main Page ❯</span>
-          </Link>
+          <AuthPageLink />
+          <MainPageLink />
         </div>
 
         <div className="welcome-page-content1">
@@ -62,7 +58,7 @@ function About() {
           <p className="content-item-description"></p>
         </div>
       </div>
-    </>
+    </main>
   );
 }
 

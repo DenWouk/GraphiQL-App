@@ -1,100 +1,67 @@
-:root {
-    --color1: #313131;
-    --color2: #fefefe;
-    --color3: #ebefd0;
-    --color4: #3a3939;
-
-    --error-color: #e71212;
-    --success-color: #08995c;
-
-    --link-color1: #2270ec;
-    --link-color2: #61c2e9;
-    --link-color3: #bbf3f6;
-
-    --background-color1: #fefefe;
-    --background-color2: #0f0f0f;
-    --background-color3: #7fa998;
-    --background-color4: #f8f8f8;
-    --background-color5: #2c2c2c;
-    --background-color6: #89b8a5;
-    --background-color7: #696969;
-    --background-color8: #e0d2d2;
-    --background-color9: #b895ff;
-    --background-color10: #e6603f;
-
-    --modal-blur1: #000000a6;
-    --modal-blur2: #ffffffb7;
-    --modal-blur3: #ebefd09f;
-
-    --border1: 1px solid #e1e1e1;
-    --border2: 1px solid #fefefe;
-    --border3: 1px solid #ebefd0;
-    --border4: 2px solid #727272;
-    --border5: 2px solid #fefefe;
-    --border6: 2px solid #ebefd0;
-
-    --box-shadow1: -1px 1px #e1e1e1;
-}
-
 .header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    padding: 0 20px;
-    border-bottom: var(--border1);
-    background-color: var(--background-color1);
-    transition: 0.2s height, 0.4s background-color ease-in-out;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  border-bottom: var(--border1);
+  background-color: var(--background-color4);
+  transition:
+    0.4s height,
+    0.4s background-color ease-in-out;
 }
 
 .header.sticky {
-    height: 35px;
+  height: 35px;
+  background-color: transparent;
 }
 
 .header-title {
-    justify-self: flex-start;
+  justify-self: flex-start;
 }
 
 .nav {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .nav-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 23px;
-    padding: 0 5px;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: initial;
-    color: var(--color1);
-    text-decoration: none;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 23px;
+  padding: 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: initial;
+  color: var(--color1);
+  text-decoration: none;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background-color: transparent;
 }
 
 .header-btns {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .auth-btns {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
+
 .auth-btn {
-    width: 80px;
-    height: 25px;
-    font-size: 16px;
-    font-weight: 500;
-    color: inherit;
-    border: solid 1px grey;
-    border-radius: 3px;
-    cursor: pointer;
+  width: 80px;
+  height: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: inherit;
+  border: solid 1px grey;
+  border-radius: 3px;
+  cursor: pointer;
 }
+

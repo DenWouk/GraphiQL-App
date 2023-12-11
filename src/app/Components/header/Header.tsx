@@ -10,6 +10,7 @@ const Header = () => {
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
+
     scrollTop >= 0 && headerRef.current?.classList.add('sticky');
     scrollTop <= 0 && headerRef.current?.classList.remove('sticky');
   };
