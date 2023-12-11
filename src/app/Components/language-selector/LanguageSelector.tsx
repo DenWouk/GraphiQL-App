@@ -6,6 +6,7 @@ export function LanguageSelector() {
       <option defaultValue="EN">EN</option>
       <option value="BY">BY</option>
       <option value="RU">RU</option>
+      <option value="RU">UA</option>
     </select>
   );
 }
