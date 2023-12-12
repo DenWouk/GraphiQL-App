@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
+import { languages } from '@/app/languages/languages';
+import { LangContext } from '@/app/store/langContext';
 import './Header.css';
 
 const Header = () => {
+  const context = useContext(LangContext);
   const headerRef = useRef<HTMLElement | null>(null);
 
   const isSticky = () => {
@@ -20,7 +23,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', isSticky);
     };
-  });
+  }, []);
 
   return (
     <header className="header" ref={headerRef}>
@@ -30,11 +33,11 @@ const Header = () => {
 
       <nav className="nav">
         <Link className="nav-link" href="/">
-          Main
+          {languages.main[context.language]}
         </Link>
 
         <Link className="nav-link" href="about">
-          About
+          {languages.about[context.language]}
         </Link>
       </nav>
 
