@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
 import './Header.css';
-import AuthDetails from '../AuthDetails';
+import AuthDetails from '../authorization/AuthDetails';
 
 const Header = () => {
   const headerRef = useRef<HTMLElement | null>(null);

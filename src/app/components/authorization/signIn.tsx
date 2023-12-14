@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { UserSchemaWithoutConfirm } from '../utils/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+import { useAppSelector } from '@/app/lib/hooks/redux';
 
 type authData = {
   email: string;
@@ -15,6 +16,13 @@ type authData = {
 
 const SignInForm = () => {
   const router = useRouter();
+  const { authUser } = useAppSelector((state) => state.authReducer);
+  useEffect(() => {
+    if (authUser) {
+      router.replace('/');
+    }
+  }, [authUser, router]);
+
   const {
     register,
     handleSubmit,
@@ -27,16 +35,13 @@ const SignInForm = () => {
   const onSubmit = async (data: authData) => {
     const { email, password } = data;
     console.log(data);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    router.push('/');
+    signInWithEmailAndPassword(auth, email, password).catch((error) => {
+      console.log(error);
+    });
   };
-
+  if (authUser) {
+    return null;
+  }
   return (
     <form className="submit" onSubmit={handleSubmit(onSubmit)}>
       <input placeholder="Email" {...register('email')} />

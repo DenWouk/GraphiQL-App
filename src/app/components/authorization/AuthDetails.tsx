@@ -1,18 +1,20 @@
 'use client';
-import { User, onAuthStateChanged, signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
-import { auth } from './utils/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect } from 'react';
+import { auth } from '../utils/firebase';
 import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '../../lib/hooks/redux';
+import { setAuthUser } from '../../lib/reducers/auth';
 
 const AuthDetails = () => {
-  const [authUser, setAuthUser] = useState<User | null>(null);
-
+  const dispatch = useAppDispatch();
+  const { authUser } = useAppSelector((state) => state.authReducer);
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setAuthUser(user);
+        dispatch(setAuthUser(user));
       } else {
-        setAuthUser(null);
+        dispatch(setAuthUser(null));
       }
     });
 
@@ -22,15 +24,11 @@ const AuthDetails = () => {
   }, []);
 
   const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log('sign out successful');
-      })
-      .catch((error) => console.log(error));
+    signOut(auth).catch((error) => console.log(error));
   };
 
   return (
-    <div>
+    <>
       {authUser ? (
         <>
           <p>{`Signed In as ${authUser.email}`}</p>
@@ -46,7 +44,7 @@ const AuthDetails = () => {
           </Link>
         </>
       )}
-    </div>
+    </>
   );
 };
 
