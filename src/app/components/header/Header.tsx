@@ -28,7 +28,6 @@ const Header = () => {
       <Link href="/">
         <h1 className="header-title">GraphiQL</h1>
       </Link>
-
       <nav className="nav">
         <Link className="nav-link" href="/">
           Main

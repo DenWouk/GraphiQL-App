@@ -24,8 +24,8 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           {children}
+          <Footer />{' '}
         </StoreProvider>
-        <Footer />
       </body>
     </html>
   );
