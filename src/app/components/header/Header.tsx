@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
 import './Header.css';
+import AuthDetails from '../AuthDetails';
 
 const Header = () => {
   const headerRef = useRef<HTMLElement | null>(null);
@@ -40,13 +41,8 @@ const Header = () => {
 
       <div className="header-btns">
         <div className="auth-btns">
-          <Link href="authorization">
-            <button className="auth-btn">Sign In</button>
-          </Link>
-
-          <button className="auth-btn">Logout</button>
+          <AuthDetails></AuthDetails>
         </div>
-
         <div className="selectors-container">
           <LanguageSelector />
         </div>

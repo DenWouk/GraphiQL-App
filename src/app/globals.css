@@ -1,20 +1,16 @@
 :root {
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+  --font-mono: ui-monospace, menlo, monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
   --color1: #313131;
   --color2: #fefefe;
   --color3: #ebefd0;
   --color4: #3a3939;
-
   --error-color: #e71212;
   --success-color: #08995c;
-
   --link-color1: #2270ec;
   --link-color2: #61c2e9;
   --link-color3: #bbf3f6;
-
   --background-color1: #fefefe;
   --background-color2: #0f0f0f;
   --background-color3: #7fa998;
@@ -25,18 +21,15 @@
   --background-color8: #e0d2d2;
   --background-color9: #b895ff;
   --background-color10: #e6603f;
-
   --modal-blur1: #000000a6;
   --modal-blur2: #ffffffb7;
   --modal-blur3: #ebefd09f;
-
   --border1: 1px solid #e1e1e1;
   --border2: 1px solid #fefefe;
   --border3: 1px solid #ebefd0;
   --border4: 2px solid #727272;
   --border5: 2px solid #fefefe;
   --border6: 2px solid #ebefd0;
-
   --box-shadow1: -1px 1px #e1e1e1;
 }
 
@@ -64,4 +57,40 @@ main {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.auth-page-title {
+  margin-top: 100px;
+}
+
+.submit {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  row-gap: 30px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.submit .input-box {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.submit input,
+.submit select {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.submit input:focus {
+  border: 3px #007bff solid;
+  box-shadow: 0 0 8px rgb(0 123 255 / 50%);
+}
+.submit .error {
+  color: #ff0000;
+  font-weight: 700;
+  font-size: 18px;
 }

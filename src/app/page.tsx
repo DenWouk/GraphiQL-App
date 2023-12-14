@@ -1,4 +1,4 @@
-import AuthPageLink from './components/links/AuthPageLink';
+import AuthDetails from './components/AuthDetails';
 import './page.css';
 
 export default function Home() {
@@ -6,7 +6,7 @@ export default function Home() {
     <main className="main">
       <div className="auth-note-container">
         <h2 className="auth-note-title">Please authorize to access app!</h2>
-        <AuthPageLink />
+        <AuthDetails></AuthDetails>
       </div>
     </main>
   );
