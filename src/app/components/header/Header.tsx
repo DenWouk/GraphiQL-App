@@ -6,6 +6,7 @@ import { LanguageSelector } from '../language-selector/LanguageSelector';
 import { languages } from '@/app/languages/languages';
 import { LangContext } from '@/app/store/langContext';
 import './Header.css';
+import AuthDetails from '../authorization/AuthDetails';
 
 const Header = () => {
   const context = useContext(LangContext);
@@ -30,7 +31,6 @@ const Header = () => {
       <Link href="/">
         <h1 className="header-title">GraphiQL</h1>
       </Link>
-
       <nav className="nav">
         <Link className="nav-link" href="/">
           {languages.main[context.language]}
@@ -43,13 +43,8 @@ const Header = () => {
 
       <div className="header-btns">
         <div className="auth-btns">
-          <Link href="authorization">
-            <button className="auth-btn">Sign In</button>
-          </Link>
-
-          <button className="auth-btn">Logout</button>
+          <AuthDetails></AuthDetails>
         </div>
-
         <div className="selectors-container">
           <LanguageSelector />
         </div>

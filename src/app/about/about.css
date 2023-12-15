@@ -82,7 +82,7 @@
   line-height: 1.3;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .welcome-page-content1 {
     flex-direction: column;
     align-items: center;
