@@ -4,13 +4,23 @@ import Link from 'next/link';
 import { useContext, useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
 import { languages } from '@/app/languages/languages';
-import { LangContext } from '@/app/store/langContext';
+import { LangContext } from '@/app/lib/context/langContext';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks/redux';
+import { auth } from '../utils/firebase';
+import { setAuthUser } from '@/app/lib/redux/reducers/auth';
 import './Header.css';
-import AuthDetails from '../authorization/AuthDetails';
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const { authUser } = useAppSelector((state) => state.authReducer);
+
   const context = useContext(LangContext);
   const headerRef = useRef<HTMLElement | null>(null);
+
+  const userSignOut = () => {
+    signOut(auth).catch((error) => console.log(error));
+  };
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
@@ -18,6 +28,20 @@ const Header = () => {
     scrollTop >= 0 && headerRef.current?.classList.add('sticky');
     scrollTop <= 0 && headerRef.current?.classList.remove('sticky');
   };
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setAuthUser(user));
+      } else {
+        dispatch(setAuthUser(null));
+      }
+    });
+
+    return () => {
+      listen();
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -43,8 +67,20 @@ const Header = () => {
 
       <div className="header-btns">
         <div className="auth-btns">
-          <AuthDetails></AuthDetails>
+          {authUser ? (
+            <>
+              <p>{authUser.email}</p>
+              <button onClick={userSignOut}>Sign Out</button>
+            </>
+          ) : (
+            <>
+              <Link className="nav-link" href="authorization">
+                Sign In
+              </Link>
+            </>
+          )}
         </div>
+
         <div className="selectors-container">
           <LanguageSelector />
         </div>

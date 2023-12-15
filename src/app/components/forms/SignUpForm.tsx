@@ -7,7 +7,7 @@ import { UserSchemaWithConfirm } from '../utils/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useAppSelector } from '@/app/lib/hooks/redux';
+import { useAppSelector } from '@/app/lib/redux/hooks/redux';
 
 type authData = {
   email: string;
@@ -39,15 +39,19 @@ const SignUpForm = () => {
       console.log(error);
     });
   };
+
   if (authUser) {
     return null;
   }
+
   return (
     <form className="submit" onSubmit={handleSubmit(onSubmit)}>
       <input placeholder="Email" {...register('email')} />
       {errors.email && <p className="error">{errors.email.message}</p>}
+
       <input placeholder="Password" type="password" {...register('password')} />
       {errors.password && <p className="error">{errors.password.message}</p>}
+
       <input
         placeholder="Confirm password"
         type="password"
@@ -56,6 +60,7 @@ const SignUpForm = () => {
       {errors.confirmPassword && (
         <p className="error">{errors.confirmPassword.message}</p>
       )}
+
       <button type="submit">Sign Up</button>
     </form>
   );
