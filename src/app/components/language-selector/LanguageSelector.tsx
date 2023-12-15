@@ -13,7 +13,7 @@ export function LanguageSelector() {
   }
 
   return (
-    // languages option values: EN=0, BY=1, RU=2;
+    // languages option values: EN=0, BY=1, RU=2 UA=3;
 
     <select
       className="language-select"
@@ -24,6 +24,7 @@ export function LanguageSelector() {
       <option value={0}>EN</option>
       <option value={1}>BY</option>
       <option value={2}>RU</option>
+      <option value={3}>UA</option>
     </select>
   );
 }
