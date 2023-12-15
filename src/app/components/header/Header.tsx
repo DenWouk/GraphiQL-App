@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
 import './Header.css';
+import AuthDetails from '../authorization/AuthDetails';
 
 const Header = () => {
   const headerRef = useRef<HTMLElement | null>(null);
@@ -27,7 +28,6 @@ const Header = () => {
       <Link href="/">
         <h1 className="header-title">GraphiQL</h1>
       </Link>
-
       <nav className="nav">
         <Link className="nav-link" href="/">
           Main
@@ -40,13 +40,8 @@ const Header = () => {
 
       <div className="header-btns">
         <div className="auth-btns">
-          <Link href="authorization">
-            <button className="auth-btn">Sign In</button>
-          </Link>
-
-          <button className="auth-btn">Logout</button>
+          <AuthDetails></AuthDetails>
         </div>
-
         <div className="selectors-container">
           <LanguageSelector />
         </div>

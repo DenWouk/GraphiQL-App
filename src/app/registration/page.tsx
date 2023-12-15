@@ -1,10 +1,9 @@
 'use client';
-import SignInForm from '../components/authorization/signIn';
-
+import SignUpForm from '../components/authorization/signUp';
 export default function Authorization() {
   return (
     <main className="main">
-      <SignInForm></SignInForm>
+      <SignUpForm></SignUpForm>
     </main>
   );
 }
