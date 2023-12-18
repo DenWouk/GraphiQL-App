@@ -9,6 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setAuthUser } from './lib/redux/reducers/auth';
 import { auth } from './components/utils/firebase';
 import './page.css';
+import Playground from './components/playground/Playground';
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ export default function Home() {
             {languages.autorize[context.language]}
           </h2>
           <AuthPageLink />
+          <Playground />
         </div>
       )}
     </main>
