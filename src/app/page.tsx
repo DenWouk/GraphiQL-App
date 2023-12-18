@@ -34,16 +34,18 @@ export default function Home() {
   return (
     <main className="main">
       {authUser ? (
-        <h2 className="main-page-title">
-          {languages.welcome[context.language]}
-        </h2>
+        <div className="main-container">
+          <h2 className="main-page-title">
+            {languages.welcome[context.language]}
+          </h2>
+          <Playground />
+        </div>
       ) : (
         <div className="auth-note-container">
           <h2 className="auth-note-title">
             {languages.autorize[context.language]}
           </h2>
           <AuthPageLink />
-          <Playground />
         </div>
       )}
     </main>
