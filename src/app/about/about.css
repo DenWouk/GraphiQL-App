@@ -1,26 +1,23 @@
 .welcome-page-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 25px);
-  padding: 70px 20px 45px;
+  gap: 30px;
+  width: 100%;
+  min-height: 90vh;
+  padding: 20px;
   background-color: var(--background-color1);
 }
 
-.welcome-page-title,
-.content-title {
-  font-size: 40px;
+.welcome-page-title {
+  font-size: 30px;
   color: var(--color1);
 }
 
 .welcome-page-links {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+  justify-content: end;
   width: 100%;
-  padding: 20px 0 10px;
 }
 
 .welcome-page-link:hover {

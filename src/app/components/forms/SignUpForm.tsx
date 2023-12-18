@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { UserSchemaWithConfirm } from '../utils/yup';
@@ -8,6 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useAppSelector } from '@/app/lib/redux/hooks/redux';
+import Link from 'next/link';
+import { LangContext } from '@/app/lib/context/langContext';
+import { languages } from '@/app/languages/languages';
+import './Forms.css';
 
 type authData = {
   email: string;
@@ -15,6 +19,8 @@ type authData = {
 };
 
 const SignUpForm = () => {
+  const context = useContext(LangContext);
+
   const router = useRouter();
   const { authUser } = useAppSelector((state) => state.authReducer);
 
@@ -45,15 +51,19 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className="submit" onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder="Email" {...register('email')} />
+    <form className="form reg-form" onSubmit={handleSubmit(onSubmit)}>
+      <input placeholder="email" {...register('email')} />
       {errors.email && <p className="error">{errors.email.message}</p>}
 
-      <input placeholder="Password" type="password" {...register('password')} />
+      <input
+        placeholder={languages.pass[context.language]}
+        type="password"
+        {...register('password')}
+      />
       {errors.password && <p className="error">{errors.password.message}</p>}
 
       <input
-        placeholder="Confirm password"
+        placeholder={languages.confirmPass[context.language]}
         type="password"
         {...register('confirmPassword')}
       />
@@ -61,7 +71,12 @@ const SignUpForm = () => {
         <p className="error">{errors.confirmPassword.message}</p>
       )}
 
-      <button type="submit">Sign Up</button>
+      <button type="submit">{languages.signUp[context.language]}</button>
+
+      <p>{languages.haveAccount[context.language]}</p>
+      <Link className="registration-link" href="authorization">
+        {`${languages.signIn[context.language]} ❯`}
+      </Link>
     </form>
   );
 };

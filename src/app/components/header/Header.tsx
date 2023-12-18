@@ -66,24 +66,23 @@ const Header = () => {
       </nav>
 
       <div className="header-btns">
-        <div className="auth-btns">
-          {authUser ? (
-            <>
-              <p>{authUser.email}</p>
-              <button onClick={userSignOut}>Sign Out</button>
-            </>
-          ) : (
-            <>
-              <Link className="nav-link" href="authorization">
-                Sign In
-              </Link>
-            </>
-          )}
-        </div>
-
-        <div className="selectors-container">
-          <LanguageSelector />
-        </div>
+        {authUser ? (
+          <>
+            <p className="user-name">{authUser.email}</p>
+            <button className="nav-btn" onClick={userSignOut}>
+              {languages.signOut[context?.language]}
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="authorization">
+              <button className="nav-btn">
+                {languages.signIn[context?.language]}
+              </button>
+            </Link>
+          </>
+        )}
+        <LanguageSelector />
       </div>
     </header>
   );
