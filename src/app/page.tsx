@@ -1,4 +1,5 @@
 import AuthPageLink from './components/links/AuthPageLink';
+import Playground from './components/playground/Playground';
 import './page.css';
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <h2 className="auth-note-title">Please authorize to access app!</h2>
         <AuthPageLink />
       </div>
+      <Playground />
     </main>
   );
 }
