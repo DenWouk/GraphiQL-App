@@ -1,0 +1,14 @@
+.playground-wrapper {
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.editors-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
