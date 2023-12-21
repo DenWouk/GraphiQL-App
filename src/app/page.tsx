@@ -14,13 +14,14 @@ import Playground from './components/playground/Playground';
 export default function Home() {
   const dispatch = useAppDispatch();
   const { authUser } = useAppSelector((state) => state.authReducer);
+  console.log(authUser);
 
   const context = useContext(LangContext);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setAuthUser(user));
+        dispatch(setAuthUser(user.email));
       } else {
         dispatch(setAuthUser(null));
       }
