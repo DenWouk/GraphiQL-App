@@ -32,7 +32,8 @@ const Header = () => {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setAuthUser(user));
+        console.log(user);
+        dispatch(setAuthUser(user.email));
       } else {
         dispatch(setAuthUser(null));
       }
@@ -68,7 +69,7 @@ const Header = () => {
       <div className="header-btns">
         {authUser ? (
           <>
-            <p className="user-name">{authUser.email}</p>
+            <p className="user-name">{authUser}</p>
             <button className="nav-btn" onClick={userSignOut}>
               {languages.signOut[context?.language]}
             </button>

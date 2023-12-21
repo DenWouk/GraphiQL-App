@@ -42,7 +42,11 @@ const SignUpForm = () => {
   const onSubmit = async (data: authData) => {
     const { email, password } = data;
     createUserWithEmailAndPassword(auth, email, password).catch((error) => {
-      console.log(error);
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('такой пользователь уже есть');
+      } else {
+        console.log(error);
+      }
     });
   };
 

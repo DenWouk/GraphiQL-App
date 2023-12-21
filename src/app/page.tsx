@@ -9,17 +9,19 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setAuthUser } from './lib/redux/reducers/auth';
 import { auth } from './components/utils/firebase';
 import './page.css';
+import Playground from './components/playground/Playground';
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const { authUser } = useAppSelector((state) => state.authReducer);
+  console.log(authUser);
 
   const context = useContext(LangContext);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setAuthUser(user));
+        dispatch(setAuthUser(user.email));
       } else {
         dispatch(setAuthUser(null));
       }
@@ -33,9 +35,12 @@ export default function Home() {
   return (
     <main className="main">
       {authUser ? (
-        <h2 className="main-page-title">
-          {languages.welcome[context.language]}
-        </h2>
+        <div className="main-container">
+          <h2 className="main-page-title">
+            {languages.welcome[context.language]}
+          </h2>
+          <Playground />
+        </div>
       ) : (
         <div className="auth-note-container">
           <h2 className="auth-note-title">
