@@ -1,28 +1,23 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import './Forms.css';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { UserSchemaWithConfirm } from '../../utils/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../utils/firebase';
-import { useAppSelector } from '@/lib/redux/hooks/redux';
+import Link from 'next/link';
+import { LangContext } from '@/lib/context/langContext';
+import { UserSchemaWithConfirm } from '@/utils/yup';
+import { auth } from '@/utils/firebase';
+import { languages } from '@/languages/languages';
 
 type authData = {
   email: string;
   password: string;
 };
 
-const SignUpForm = () => {
-  const router = useRouter();
-  const { authUser } = useAppSelector((state) => state.authReducer);
-
-  useEffect(() => {
-    if (authUser) {
-      router.replace('/');
-    }
-  }, [authUser, router]);
+export default function SignUpForm() {
+  const context = useContext(LangContext);
 
   const {
     register,
@@ -44,20 +39,20 @@ const SignUpForm = () => {
     });
   };
 
-  if (authUser) {
-    return null;
-  }
-
   return (
-    <form className="submit" onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder="Email" {...register('email')} />
+    <form className="form reg-form" onSubmit={handleSubmit(onSubmit)}>
+      <input placeholder="email" {...register('email')} />
       {errors.email && <p className="error">{errors.email.message}</p>}
 
-      <input placeholder="Password" type="password" {...register('password')} />
+      <input
+        placeholder={languages.pass[context.language]}
+        type="password"
+        {...register('password')}
+      />
       {errors.password && <p className="error">{errors.password.message}</p>}
 
       <input
-        placeholder="Confirm password"
+        placeholder={languages.confirmPass[context.language]}
         type="password"
         {...register('confirmPassword')}
       />
@@ -65,9 +60,12 @@ const SignUpForm = () => {
         <p className="error">{errors.confirmPassword.message}</p>
       )}
 
-      <button type="submit">Sign Up</button>
+      <button type="submit">{languages.signUp[context.language]}</button>
+
+      <p>{languages.haveAccount[context.language]}</p>
+      <Link className="registration-link" href="authorization">
+        {`${languages.signIn[context.language]} ❯`}
+      </Link>
     </form>
   );
-};
-
-export default SignUpForm;
+}

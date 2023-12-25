@@ -4,13 +4,13 @@ import { useContext } from 'react';
 import { LangContext } from '@/lib/context/langContext';
 import { languages } from '@/languages/languages';
 
-export default function AuthPageLink() {
+export default function RegPageLink() {
   const context = useContext(LangContext);
 
   return (
-    <Link href="authorization" className="page-link">
+    <Link href="registration" className="page-link">
       <span className="link-arrow">{`${
-        languages.signIn[context.language]
+        languages.signUp[context.language]
       } ❯`}</span>
     </Link>
   );

@@ -1,17 +1,17 @@
 'use client';
 
+import './Header.css';
 import Link from 'next/link';
 import { useContext, useEffect, useRef } from 'react';
-import { LanguageSelector } from '../language-selector/LanguageSelector';
+import { LanguageSelector } from '../selectors/LanguageSelector';
 import { languages } from '@/languages/languages';
 import { LangContext } from '@/lib/context/langContext';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { auth } from '../../utils/firebase';
 import { setAuthUser } from '@/lib/redux/reducers/auth';
-import './Header.css';
 
-const Header = () => {
+export default function Header() {
   const dispatch = useAppDispatch();
   const { authUser } = useAppSelector((state) => state.authReducer);
 
@@ -56,38 +56,40 @@ const Header = () => {
       <Link href="/">
         <h1 className="header-title">GraphiQL</h1>
       </Link>
-      <nav className="nav">
-        <Link className="nav-link" href="/">
-          {languages.main[context.language]}
-        </Link>
 
-        <Link className="nav-link" href="about">
-          {languages.about[context.language]}
-        </Link>
+      <nav className="nav">
+        {authUser && (
+          <>
+            <Link className="nav-link" href="/">
+              {languages.about[context.language]}
+            </Link>
+
+            <Link className="nav-link" href="editor">
+              {languages.editor[context.language]}
+            </Link>
+          </>
+        )}
       </nav>
 
       <div className="header-btns">
-        <div className="auth-btns">
-          {authUser ? (
-            <>
-              <p>{authUser}</p>
-              <button onClick={userSignOut}>Sign Out</button>
-            </>
-          ) : (
-            <>
-              <Link className="nav-link" href="authorization">
-                Sign In
-              </Link>
-            </>
-          )}
-        </div>
-
-        <div className="selectors-container">
-          <LanguageSelector />
-        </div>
+        {authUser ? (
+          <>
+            <p className="user-name">{authUser}</p>
+            <button className="nav-btn" onClick={userSignOut}>
+              {languages.signOut[context?.language]}
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="authorization">
+              <button className="nav-btn">
+                {languages.signIn[context?.language]}
+              </button>
+            </Link>
+          </>
+        )}
+        <LanguageSelector />
       </div>
     </header>
   );
-};
-
-export default Header;
+}

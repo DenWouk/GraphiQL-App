@@ -1,13 +1,13 @@
 'use client';
 
-import './authorization.css';
-import SignInForm from '@/components/forms/SignInForm';
+import './registration.css';
+import SignUpForm from '@/components/forms/SignUpForm';
 import GoBackLink from '@/components/links/GoBackLink';
 import { useAppSelector } from '@/lib/redux/hooks/redux';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function Authorization() {
+export default function Registration() {
   const router = useRouter();
   const { authUser } = useAppSelector((state) => state.authReducer);
 
@@ -23,7 +23,7 @@ export default function Authorization() {
         <GoBackLink />
       </div>
 
-      <SignInForm />
+      <SignUpForm />
     </main>
   );
 }

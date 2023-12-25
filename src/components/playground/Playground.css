@@ -1,11 +1,12 @@
 .playground-wrapper {
   display: flex;
-  margin-top: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 15px;
+  margin-top: 3%;
 }
+
 .editors-wrapper {
   display: flex;
   justify-content: center;
