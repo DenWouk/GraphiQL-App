@@ -1,8 +1,8 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { useCallback } from 'react';
-import { setResponseValue } from '@/app/lib/redux/reducers/responseValue';
+import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 
 export default function ResponseEditor() {
   const value = useAppSelector((state) => state.responseValue.responseValue);

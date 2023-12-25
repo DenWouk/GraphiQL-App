@@ -1,6 +1,6 @@
 'use client';
 
-import SignUpForm from '../components/forms/SignUpForm';
+import SignUpForm from '../forms/SignUpForm';
 
 export default function Authorization() {
   return (

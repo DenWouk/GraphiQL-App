@@ -1,8 +1,8 @@
 'use client';
 import './Playground.css';
 import Button from '@mui/material/Button/Button';
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks/redux';
-import { setRequestJson } from '@/app/lib/redux/reducers/requestJson';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
+import { setRequestJson } from '@/lib/redux/reducers/requestJson';
 import ResponseEditor from './responseEditor/ResponseEditor';
 import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';

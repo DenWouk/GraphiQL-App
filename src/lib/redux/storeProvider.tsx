@@ -1,6 +1,6 @@
 'use client';
 import { Provider } from 'react-redux';
-import { setupStore } from './lib/redux/store';
+import { setupStore } from './store';
 const store = setupStore();
 
 export default function StoreProvider({

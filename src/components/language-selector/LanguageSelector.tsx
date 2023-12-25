@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useContext } from 'react';
-import { LangContext } from '@/app/lib/context/langContext';
+import { LangContext } from '@/lib/context/langContext';
 import './LanguageSelector.css';
 
 export function LanguageSelector() {

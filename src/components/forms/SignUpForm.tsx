@@ -3,22 +3,21 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { UserSchemaWithoutConfirm } from '../utils/yup';
+import { UserSchemaWithConfirm } from '../../utils/yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../utils/firebase';
-import Link from 'next/link';
-import { useAppSelector } from '@/app/lib/redux/hooks/redux';
-import './Forms.css';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../utils/firebase';
+import { useAppSelector } from '@/lib/redux/hooks/redux';
 
 type authData = {
   email: string;
   password: string;
 };
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const router = useRouter();
   const { authUser } = useAppSelector((state) => state.authReducer);
+
   useEffect(() => {
     if (authUser) {
       router.replace('/');
@@ -30,15 +29,18 @@ const SignInForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(UserSchemaWithoutConfirm),
+    resolver: yupResolver(UserSchemaWithConfirm),
     mode: 'onChange',
   });
 
   const onSubmit = async (data: authData) => {
     const { email, password } = data;
-
-    signInWithEmailAndPassword(auth, email, password).catch((error) => {
-      console.log(error);
+    createUserWithEmailAndPassword(auth, email, password).catch((error) => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('такой пользователь уже есть');
+      } else {
+        console.log(error);
+      }
     });
   };
 
@@ -54,14 +56,18 @@ const SignInForm = () => {
       <input placeholder="Password" type="password" {...register('password')} />
       {errors.password && <p className="error">{errors.password.message}</p>}
 
-      <button type="submit">Sign In</button>
+      <input
+        placeholder="Confirm password"
+        type="password"
+        {...register('confirmPassword')}
+      />
+      {errors.confirmPassword && (
+        <p className="error">{errors.confirmPassword.message}</p>
+      )}
 
-      <p>{`Don't have an account yet?`}</p>
-      <Link className="registration-link" href="registration">
-        Registration ❯
-      </Link>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

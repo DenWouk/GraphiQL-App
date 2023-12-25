@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks/redux';
-import { setGraphqlApi } from '@/app/lib/redux/reducers/graphqlApi';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
+import { setGraphqlApi } from '@/lib/redux/reducers/graphqlApi';
 import TextField from '@mui/material/TextField/TextField';
 
 export default function Playground() {

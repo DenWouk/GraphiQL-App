@@ -1,15 +1,15 @@
 'use client';
 
 import { useContext, useEffect } from 'react';
-import AuthPageLink from './components/links/AuthPageLink';
-import { LangContext } from './lib/context/langContext';
-import { languages } from './languages/languages';
-import { useAppDispatch, useAppSelector } from './lib/redux/hooks/redux';
+import AuthPageLink from '../components/links/AuthPageLink';
+import { LangContext } from '../lib/context/langContext';
+import { languages } from '../languages/languages';
+import { useAppDispatch, useAppSelector } from '../lib/redux/hooks/redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { setAuthUser } from './lib/redux/reducers/auth';
-import { auth } from './components/utils/firebase';
+import { setAuthUser } from '../lib/redux/reducers/auth';
+import { auth } from '../utils/firebase';
 import './page.css';
-import Playground from './components/playground/Playground';
+import Playground from '../components/playground/Playground';
 
 export default function Home() {
   const dispatch = useAppDispatch();

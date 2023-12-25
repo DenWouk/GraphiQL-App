@@ -1,5 +1,5 @@
-import AuthPageLink from '../components/links/AuthPageLink';
-import MainPageLink from '../components/links/MainPageLink';
+import AuthPageLink from '../../components/links/AuthPageLink';
+import MainPageLink from '../../components/links/MainPageLink';
 import './about.css';
 
 function About() {

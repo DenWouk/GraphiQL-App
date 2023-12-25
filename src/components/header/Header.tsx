@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import { useContext, useEffect, useRef } from 'react';
 import { LanguageSelector } from '../language-selector/LanguageSelector';
-import { languages } from '@/app/languages/languages';
-import { LangContext } from '@/app/lib/context/langContext';
+import { languages } from '@/languages/languages';
+import { LangContext } from '@/lib/context/langContext';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useAppDispatch, useAppSelector } from '@/app/lib/redux/hooks/redux';
-import { auth } from '../utils/firebase';
-import { setAuthUser } from '@/app/lib/redux/reducers/auth';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
+import { auth } from '../../utils/firebase';
+import { setAuthUser } from '@/lib/redux/reducers/auth';
 import './Header.css';
 
 const Header = () => {
