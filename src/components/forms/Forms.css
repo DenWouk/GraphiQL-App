@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  margin-top: 10%;
+}
+
+.form .input-box {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.form input,
+.form select {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form input:focus {
+  border: 3px #007bff solid;
+  box-shadow: 0 0 8px rgb(0 123 255 / 50%);
+}
+
+.form .error {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--error-color);
+}
+
+.registration-link {
+  color: var(--link-color1);
+  text-decoration: dashed;
+}

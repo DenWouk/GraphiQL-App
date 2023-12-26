@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Header from '@/app/components/header/Header';
-import setupStore from '@/app/lib/redux/store';
+import Header from '@/components/header/Header';
+import setupStore from '@/lib/redux/store';
 import { Provider } from 'react-redux';
 import { ReactElement } from 'react';
 
