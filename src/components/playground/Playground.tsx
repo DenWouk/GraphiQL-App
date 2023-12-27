@@ -7,6 +7,20 @@ import { setRequestJson } from '@/lib/redux/reducers/requestJson';
 import ResponseEditor from './responseEditor/ResponseEditor';
 import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
+import { setSchema } from '@/lib/redux/reducers/schema';
+
+const schemaQuery = `query {
+  __schema {
+    types {
+      name
+      kind
+      description
+      fields {
+        name
+      }
+    }
+  }
+}`;
 
 export default function Playground() {
   const dispatch = useAppDispatch();
@@ -26,9 +40,13 @@ export default function Playground() {
   };
 
   const btnHandler = () => {
-    makeRequest(responseValue).then((response) =>
-      dispatch(setRequestJson(JSON.stringify(response, undefined, 2)))
-    );
+    makeRequest(schemaQuery)
+      .then((response) => dispatch(setSchema(response)))
+      .then(() => {
+        makeRequest(responseValue).then((response) =>
+          dispatch(setRequestJson(JSON.stringify(response, undefined, 2)))
+        );
+      });
   };
 
   return (

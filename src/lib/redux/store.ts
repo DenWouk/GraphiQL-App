@@ -5,12 +5,14 @@ import authReducer from './reducers/auth';
 import requestJson from './reducers/requestJson';
 import responseValue from './reducers/responseValue';
 import graphqlApi from './reducers/graphqlApi';
+import schema from './reducers/schema';
 
 export const rootReducer = combineReducers({
   authReducer,
   requestJson,
   responseValue,
   graphqlApi,
+  schema,
 });
 
 export const setupStore = () => {
