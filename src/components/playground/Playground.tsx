@@ -7,6 +7,8 @@ import { setRequestJson } from '@/lib/redux/reducers/requestJson';
 import ResponseEditor from './responseEditor/ResponseEditor';
 import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
+import { toPrettify } from '@/utils/prettify';
+import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 
 export default function Playground() {
   const dispatch = useAppDispatch();
@@ -30,11 +32,16 @@ export default function Playground() {
       dispatch(setRequestJson(JSON.stringify(response, undefined, 2)))
     );
   };
+  const prettifyHandler = () => {
+    const formattedQuery = toPrettify(responseValue);
+    dispatch(setResponseValue(formattedQuery));
+  };
 
   return (
     <div className="playground-wrapper">
       <ApiInput />
       <Button onClick={btnHandler}>play</Button>
+      <Button onClick={prettifyHandler}>prettify</Button>
       <div className="editors-wrapper">
         <ResponseEditor />
         <RequestEditor />
