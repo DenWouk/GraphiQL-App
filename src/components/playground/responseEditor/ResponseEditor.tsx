@@ -7,6 +7,7 @@ import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 export default function ResponseEditor() {
   const value = useAppSelector((state) => state.responseValue.responseValue);
   const dispatch = useAppDispatch();
+
   const onChange = useCallback((val: string) => {
     dispatch(setResponseValue(val));
   }, []);
