@@ -8,7 +8,7 @@ import { setRequestJson } from '@/lib/redux/reducers/requestJson';
 import ResponseEditor from './responseEditor/ResponseEditor';
 import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
-import { addVariablesValue } from '@/utils/addVariablesValue';
+import { addVariablesValue } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 
 export default function Playground() {
