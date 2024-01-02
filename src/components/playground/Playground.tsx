@@ -1,6 +1,7 @@
 'use client';
 
 import './Playground.css';
+import JSON5 from 'json5';
 import Button from '@mui/material/Button/Button';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { setRequestJson } from '@/lib/redux/reducers/requestJson';
@@ -9,12 +10,17 @@ import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
 import { toPrettify } from '@/utils/prettify';
 import { setResponseValue } from '@/lib/redux/reducers/responseValue';
+import { addVariablesValues } from '@/utils/addVariablesValues';
+import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 
 export default function Playground() {
   const dispatch = useAppDispatch();
   const api = useAppSelector((state) => state.graphqlApi.graphqlApi);
   const responseValue = useAppSelector(
     (state) => state.responseValue.responseValue
+  );
+  const variables = useAppSelector(
+    (state) => state.queryVariables.queryVariables
   );
 
   const makeRequest = async (query: string) => {
@@ -28,8 +34,21 @@ export default function Playground() {
   };
 
   const btnHandler = () => {
-    makeRequest(responseValue).then((response) =>
-      dispatch(setRequestJson(JSON.stringify(response, undefined, 2)))
+    const variablesValues = variables ? JSON5.parse(variables) : '';
+
+    for (const key in variablesValues) {
+      if (typeof variablesValues[key] === 'object') {
+        variablesValues[key] = JSON5.stringify(variablesValues[key]).replace(
+          /'/g,
+          '"'
+        );
+      }
+    }
+
+    makeRequest(addVariablesValues(responseValue, variablesValues)).then(
+      (response) => {
+        dispatch(setRequestJson(JSON.stringify(response, undefined, 2)));
+      }
     );
   };
   const prettifyHandler = () => {
@@ -45,6 +64,7 @@ export default function Playground() {
       <div className="editors-wrapper">
         <ResponseEditor />
         <RequestEditor />
+        <QueryVariablesEditor />
       </div>
     </div>
   );
