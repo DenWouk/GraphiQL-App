@@ -10,7 +10,7 @@ import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
 import { toPrettify } from '@/utils/prettify';
 import { setResponseValue } from '@/lib/redux/reducers/responseValue';
-import { addVariablesValue } from '@/utils/addVariablesValues';
+import { addVariablesValues } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 
 export default function Playground() {
@@ -34,7 +34,7 @@ export default function Playground() {
   };
 
   const btnHandler = () => {
-    const variablesValues = JSON5.parse(variables);
+    const variablesValues = variables ? JSON5.parse(variables) : '';
 
     for (const key in variablesValues) {
       if (typeof variablesValues[key] === 'object') {
@@ -45,7 +45,7 @@ export default function Playground() {
       }
     }
 
-    makeRequest(addVariablesValue(responseValue, variablesValues)).then(
+    makeRequest(addVariablesValues(responseValue, variablesValues)).then(
       (response) => {
         dispatch(setRequestJson(JSON.stringify(response, undefined, 2)));
       }

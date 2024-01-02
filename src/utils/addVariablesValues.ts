@@ -2,7 +2,10 @@ interface Variables {
   [key: string]: string;
 }
 
-export function addVariablesValue(query: string, variables: Variables): string {
+export function addVariablesValues(
+  query: string,
+  variables: Variables
+): string {
   if (query.includes('$')) {
     const indexStart = query.indexOf('(');
     const indexEnd = query.indexOf(')');
