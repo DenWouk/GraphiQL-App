@@ -1,6 +1,7 @@
 'use client';
 
 import './Playground.css';
+import JSON5 from 'json5';
 import Button from '@mui/material/Button/Button';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { setRequestJson } from '@/lib/redux/reducers/requestJson';
@@ -31,9 +32,21 @@ export default function Playground() {
   };
 
   const btnHandler = () => {
-    makeRequest(addVariablesValue(responseValue, JSON.parse(variables))).then(
-      (response) =>
-        dispatch(setRequestJson(JSON.stringify(response, undefined, 2)))
+    const variablesValues = JSON5.parse(variables);
+
+    for (const key in variablesValues) {
+      if (typeof variablesValues[key] === 'object') {
+        variablesValues[key] = JSON5.stringify(variablesValues[key]).replace(
+          /'/g,
+          '"'
+        );
+      }
+    }
+
+    makeRequest(addVariablesValue(responseValue, variablesValues)).then(
+      (response) => {
+        dispatch(setRequestJson(JSON.stringify(response, undefined, 2)));
+      }
     );
   };
 
