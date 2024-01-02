@@ -8,6 +8,8 @@ import { setRequestJson } from '@/lib/redux/reducers/requestJson';
 import ResponseEditor from './responseEditor/ResponseEditor';
 import RequestEditor from './requestEditor/RequestEditor';
 import ApiInput from './apiInput/ApiInput';
+import { toPrettify } from '@/utils/prettify';
+import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 import { addVariablesValue } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 
@@ -49,11 +51,16 @@ export default function Playground() {
       }
     );
   };
+  const prettifyHandler = () => {
+    const formattedQuery = toPrettify(responseValue);
+    dispatch(setResponseValue(formattedQuery));
+  };
 
   return (
     <div className="playground-wrapper">
       <ApiInput />
       <Button onClick={btnHandler}>play</Button>
+      <Button onClick={prettifyHandler}>prettify</Button>
       <div className="editors-wrapper">
         <ResponseEditor />
         <RequestEditor />
