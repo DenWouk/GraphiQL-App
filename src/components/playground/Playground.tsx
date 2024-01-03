@@ -12,6 +12,7 @@ import { toPrettify } from '@/utils/prettify';
 import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 import { addVariablesValues } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
+import HeadersEditor from './headersEditor/HeadersEditor';
 
 export default function Playground() {
   const dispatch = useAppDispatch();
@@ -65,6 +66,7 @@ export default function Playground() {
         <ResponseEditor />
         <RequestEditor />
         <QueryVariablesEditor />
+        <HeadersEditor />
       </div>
     </div>
   );

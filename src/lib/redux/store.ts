@@ -5,6 +5,7 @@ import authReducer from './reducers/auth';
 import requestJson from './reducers/requestJson';
 import responseValue from './reducers/responseValue';
 import queryVariables from './reducers/queryVariables';
+import httpHeaders from './reducers/httpHeaders';
 import graphqlApi from './reducers/graphqlApi';
 
 export const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
   requestJson,
   responseValue,
   queryVariables,
+  httpHeaders,
   graphqlApi,
 });
 
