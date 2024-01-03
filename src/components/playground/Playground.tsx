@@ -14,28 +14,47 @@ import { addVariablesValues } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 import HeadersEditor from './headersEditor/HeadersEditor';
 
+interface Headers {
+  [key: string]: string;
+}
+
 export default function Playground() {
   const dispatch = useAppDispatch();
   const api = useAppSelector((state) => state.graphqlApi.graphqlApi);
   const responseValue = useAppSelector(
     (state) => state.responseValue.responseValue
   );
-  const variables = useAppSelector(
+  const queryVariables = useAppSelector(
     (state) => state.queryVariables.queryVariables
   );
+  const httpHeaders = useAppSelector((state) => state.httpHeaders.httpHeaders);
+
+  const setHeaders = () => {
+    const headers: Headers = {
+      'Content-type': 'application/json',
+    };
+
+    if (httpHeaders) {
+      const headersValues = JSON5.parse(httpHeaders);
+
+      for (const key in headersValues) {
+        headers[key] = headersValues[key];
+      }
+    }
+
+    return headers;
+  };
 
   const makeRequest = async (query: string) => {
     return fetch(api, {
       method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
+      headers: setHeaders(),
       body: JSON.stringify({ query }),
     }).then((res) => res.json());
   };
 
   const btnHandler = () => {
-    const variablesValues = variables ? JSON5.parse(variables) : '';
+    const variablesValues = queryVariables ? JSON5.parse(queryVariables) : '';
 
     for (const key in variablesValues) {
       if (typeof variablesValues[key] === 'object') {
@@ -52,6 +71,7 @@ export default function Playground() {
       }
     );
   };
+
   const prettifyHandler = () => {
     const formattedQuery = toPrettify(responseValue);
     dispatch(setResponseValue(formattedQuery));
@@ -62,6 +82,7 @@ export default function Playground() {
       <ApiInput />
       <Button onClick={btnHandler}>play</Button>
       <Button onClick={prettifyHandler}>prettify</Button>
+
       <div className="editors-wrapper">
         <ResponseEditor />
         <RequestEditor />
