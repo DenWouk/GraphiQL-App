@@ -3,11 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const httpHeadersSlice = createSlice({
   name: 'httpHeaders',
   initialState: {
-    httpHeaders: '',
+    httpHeaders: localStorage.getItem('http-headers') || '',
   },
   reducers: {
     setHttpHeaders: (state, action) => {
       state.httpHeaders = action.payload;
+      localStorage.setItem('http-headers', state.httpHeaders);
     },
   },
 });

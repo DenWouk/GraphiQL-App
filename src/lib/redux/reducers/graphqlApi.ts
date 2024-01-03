@@ -3,11 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const graphqlApiSlice = createSlice({
   name: 'graphqlApiState',
   initialState: {
-    graphqlApi: '',
+    graphqlApi: localStorage.getItem('graphq-api') || '',
   },
   reducers: {
     setGraphqlApi: (state, action) => {
       state.graphqlApi = action.payload;
+      localStorage.setItem('graphq-api', state.graphqlApi);
     },
   },
 });
