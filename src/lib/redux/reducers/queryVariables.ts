@@ -1,9 +1,10 @@
+import { a } from '@/utils/getLocalStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const queryVariablesSlice = createSlice({
   name: 'queryVariables',
   initialState: {
-    queryVariables: localStorage.getItem('query-variables') || '',
+    queryVariables: a('query-variables'),
   },
   reducers: {
     setQueryVariables: (state, action) => {
