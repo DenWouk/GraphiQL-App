@@ -4,6 +4,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/auth';
 import requestJson from './reducers/requestJson';
 import responseValue from './reducers/responseValue';
+import queryVariables from './reducers/queryVariables';
+import httpHeaders from './reducers/httpHeaders';
 import graphqlApi from './reducers/graphqlApi';
 import schema from './reducers/schema';
 
@@ -11,6 +13,8 @@ export const rootReducer = combineReducers({
   authReducer,
   requestJson,
   responseValue,
+  queryVariables,
+  httpHeaders,
   graphqlApi,
   schema,
 });
