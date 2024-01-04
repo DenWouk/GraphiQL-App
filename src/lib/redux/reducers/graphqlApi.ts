@@ -1,10 +1,10 @@
-import { a } from '@/utils/getLocalStorage';
+import { getLocalStorage } from '@/utils/getLocalStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const graphqlApiSlice = createSlice({
   name: 'graphqlApiState',
   initialState: {
-    graphqlApi: a('graphq-api'),
+    graphqlApi: getLocalStorage('graphq-api'),
   },
   reducers: {
     setGraphqlApi: (state, action) => {

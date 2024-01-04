@@ -1,10 +1,10 @@
-import { a } from '@/utils/getLocalStorage';
+import { getLocalStorage } from '@/utils/getLocalStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const requestJsonSlice = createSlice({
   name: 'requestJsonState',
   initialState: {
-    requestJson: a('response-json'),
+    requestJson: getLocalStorage('response-json'),
   },
   reducers: {
     setRequestJson: (state, action) => {

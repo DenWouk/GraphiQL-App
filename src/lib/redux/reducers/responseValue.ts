@@ -1,10 +1,10 @@
-import { a } from '@/utils/getLocalStorage';
+import { getLocalStorage } from '@/utils/getLocalStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const responseValueSlice = createSlice({
   name: 'responseValueState',
   initialState: {
-    responseValue: a('request-value'),
+    responseValue: getLocalStorage('request-value'),
   },
   reducers: {
     setResponseValue: (state, action) => {

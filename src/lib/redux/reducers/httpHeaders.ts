@@ -1,10 +1,10 @@
-import { a } from '@/utils/getLocalStorage';
+import { getLocalStorage } from '@/utils/getLocalStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const httpHeadersSlice = createSlice({
   name: 'httpHeaders',
   initialState: {
-    httpHeaders: a('http-headers'),
+    httpHeaders: getLocalStorage('http-headers'),
   },
   reducers: {
     setHttpHeaders: (state, action) => {
