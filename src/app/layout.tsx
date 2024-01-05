@@ -5,6 +5,7 @@ import StoreProvider from '@/lib/redux/storeProvider';
 import { LangContextProvider } from '@/lib/context/langContext';
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
+import AuthWrapper from '@/components/authProvider/auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           <LangContextProvider>
-            <Header />
-            {children}
-            <Footer />
+            <AuthWrapper>
+              <Header />
+              {children}
+              <Footer />
+            </AuthWrapper>
           </LangContextProvider>
         </StoreProvider>
       </body>
