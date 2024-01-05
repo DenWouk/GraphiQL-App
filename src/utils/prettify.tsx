@@ -16,12 +16,14 @@ export const toPrettify = (query: string) => {
       !word.includes('(') &&
       !word.includes(')') &&
       word !== '}' &&
+      !word.includes('$') &&
+      !arr[i - 1].includes(':') &&
+      !arr[i - 1].includes('$') &&
       arr[i - 1] != '{'
     ) {
       return '\n' + word.trim();
     } else return word.trim();
   });
-
   let depth = 0;
 
   const formattedQuery = lines.map((trimmedChar, i, arr) => {
@@ -33,6 +35,12 @@ export const toPrettify = (query: string) => {
       return depth === 0 && i !== arr.length - 1
         ? '\n}'
         : '\n' + ' '.repeat(depth) + '}';
+    } else if (
+      trimmedChar.includes(':') ||
+      trimmedChar.includes(',') ||
+      trimmedChar === 'query'
+    ) {
+      return trimmedChar + ' ';
     } else {
       if (trimmedChar.includes('\n')) {
         return trimmedChar.replaceAll('\n', `${'\n' + ' '.repeat(depth)}`);
