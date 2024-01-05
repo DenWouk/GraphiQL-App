@@ -1,7 +1,7 @@
 'use client';
 
 import './Forms.css';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -18,7 +18,7 @@ type authData = {
 
 export default function SignUpForm() {
   const context = useContext(LangContext);
-
+  const [error, setError] = useState('');
   const {
     register,
     handleSubmit,
@@ -32,15 +32,23 @@ export default function SignUpForm() {
     const { email, password } = data;
     createUserWithEmailAndPassword(auth, email, password).catch((error) => {
       if (error.code === 'auth/email-already-in-use') {
-        console.log('такой пользователь уже есть');
+        setError('Email is already in use. Please sign in');
       } else {
-        console.log(error);
+        console.log(error.code);
       }
     });
   };
 
+  const handleInputChange = async () => {
+    setError('');
+  };
+
   return (
-    <form className="form reg-form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="form reg-form"
+      onSubmit={handleSubmit(onSubmit)}
+      onBlur={handleInputChange}
+    >
       <input placeholder="email" {...register('email')} />
       {errors.email && <p className="error">{errors.email.message}</p>}
 
@@ -61,7 +69,7 @@ export default function SignUpForm() {
       )}
 
       <button type="submit">{languages.signUp[context.language]}</button>
-
+      {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.haveAccount[context.language]}</p>
       <Link className="registration-link" href="authorization">
         {`${languages.signIn[context.language]} ❯`}
