@@ -7,6 +7,7 @@ import responseValue from './reducers/responseValue';
 import queryVariables from './reducers/queryVariables';
 import httpHeaders from './reducers/httpHeaders';
 import graphqlApi from './reducers/graphqlApi';
+import { createWrapper } from 'next-redux-wrapper';
 import schema from './reducers/schema';
 
 export const rootReducer = combineReducers({
@@ -30,3 +31,5 @@ export default setupStore;
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];
+
+export const wrapper = createWrapper<AppStore>(setupStore, { debug: true });
