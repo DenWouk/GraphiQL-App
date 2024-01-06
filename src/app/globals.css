@@ -6,32 +6,31 @@
   --color2: #fefefe;
   --color3: #ebefd0;
   --color4: #3a3939;
+  --color5: #e7e7e7;
   --error-color: #e71212;
   --success-color: #08995c;
   --link-color1: #2270ec;
   --link-color2: #61c2e9;
   --link-color3: #bbf3f6;
   --background-color1: #fefefe;
-  --background-color2: #0f0f0f;
-  --background-color3: #7fa998;
+  --background-color2: #4c9fc0;
   --background-color4: #f8f8f8;
   --background-color5: #2c2c2c;
-  --background-color6: #89b8a5;
-  --background-color7: #696969;
-  --background-color8: #e0d2d2;
-  --background-color9: #b895ff;
+  --background-color6: #679381;
+  --background-color7: #282c34;
   --background-color10: #e6603f;
-  --background-color11: #fefefef5;
+  --background-color11: #fefefef1;
   --modal-blur1: #000000a6;
   --modal-blur2: #ffffffb7;
   --modal-blur3: #ebefd09f;
   --border1: 1px solid #e1e1e1;
   --border2: 1px solid #fefefe;
   --border3: 1px solid #ebefd0;
-  --border4: 2px solid #727272;
+  --border4: 2px solid #939292;
   --border5: 2px solid #fefefe;
   --border6: 2px solid #ebefd0;
   --box-shadow1: -1px 1px #e1e1e1;
+  --box-shadow2: -1px 1px #acdbd3;
 }
 
 * {
@@ -47,17 +46,32 @@ body {
 }
 
 body {
+  width: 100vw;
   min-height: 100vh;
 }
 
 main {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.btn {
+  padding: 0 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.error-message {
+  width: 100vw;
+  padding: 100px 20px 20px;
+  text-align: center;
 }
 
 .auth-page-title {

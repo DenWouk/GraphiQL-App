@@ -1,8 +1,17 @@
-import './loader.css';
-export function Loader() {
+import './Loader.css';
+import { RotatingLines } from 'react-loader-spinner';
+
+function Loader(): JSX.Element {
   return (
-    <div className="loader">
-      <div className="loader_inner"></div>
+    <div className="spinner-wrapper">
+      <RotatingLines
+        strokeColor="#c0c0c0"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="100"
+      />
     </div>
   );
 }
+
+export default Loader;

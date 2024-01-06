@@ -16,7 +16,7 @@ export default function ResponseEditor() {
     <CodeMirror
       theme={'dark'}
       value={value}
-      height="500px"
+      height="400px"
       width="500px"
       onChange={onChange}
       extensions={[json()]}

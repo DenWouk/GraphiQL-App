@@ -1,6 +1,6 @@
+import './ApiInput.css';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { setGraphqlApi } from '@/lib/redux/reducers/graphqlApi';
-import TextField from '@mui/material/TextField/TextField';
 
 export default function Playground() {
   const api = useAppSelector((state) => state.graphqlApi.graphqlApi);
@@ -9,12 +9,9 @@ export default function Playground() {
     dispatch(setGraphqlApi(event.target.value));
   };
   return (
-    <TextField
-      sx={{ width: 500 }}
-      placeholder="Enter api"
-      id="outlined-basic"
-      variant="outlined"
-      size="small"
+    <input
+      className="api-input"
+      placeholder="Enter API URL"
       value={api}
       onChange={inputHandler}
     />
