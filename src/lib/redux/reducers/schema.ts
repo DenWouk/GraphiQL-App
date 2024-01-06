@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GraphQLSchema } from 'graphql';
+import { IntrospectionSchema } from 'graphql';
 const schemaSlice = createSlice({
   name: 'schemaState',
   initialState: {
-    schema: <GraphQLSchema | undefined>undefined,
+    schema: <IntrospectionSchema | undefined>undefined,
   },
   reducers: {
     setSchema: (state, action) => {

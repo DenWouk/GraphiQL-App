@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { useCallback } from 'react';
 import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 import { graphql } from 'cm6-graphql';
+import { GraphQLSchema } from 'graphql';
 
 export default function ResponseEditor() {
   const value = useAppSelector((state) => state.responseValue.responseValue);
@@ -20,7 +21,7 @@ export default function ResponseEditor() {
       height="500px"
       width="500px"
       onChange={onChange}
-      extensions={[graphql(schema)]}
+      extensions={[graphql(schema as unknown as GraphQLSchema)]}
     />
   );
 }
