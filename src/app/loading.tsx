@@ -1,6 +1,6 @@
 'use client';
 
-import Loader from '@/components/loader/Loader1';
+import Loader from '@/components/loader/Loader';
 
 export default function Loading() {
   return <Loader />;

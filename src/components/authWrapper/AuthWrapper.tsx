@@ -5,7 +5,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { setAuthUser } from '@/lib/redux/reducers/auth';
 import { auth } from '../../utils/firebase';
-import Loader from '../loader/Loader1';
+import Loader from '../loader/Loader';
 
 const AuthWrapper = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
