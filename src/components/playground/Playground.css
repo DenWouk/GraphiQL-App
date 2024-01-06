@@ -3,13 +3,77 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  margin-top: 3%;
+  gap: 2px;
+  width: 100%;
+  margin: 20px 20px 45px;
 }
 
-.editors-wrapper {
+.request-response-editors,
+.variables-headers-editors {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.editor {
+  position: relative;
+  width: 50%;
+}
+
+.editor-title-1,
+.editor-title-2,
+.editor-title-3,
+.editor-title-4 {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  z-index: 5;
+  font-size: 14px;
+  color: var(--color5);
+}
+
+.playground-controls {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 5;
+  display: flex;
   gap: 10px;
+}
+
+.prettify-btn,
+.play-btn {
+  width: 120px;
+  height: 28px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color5);
+  border: none;
+  background-color: var(--background-color6);
+  box-shadow: var(--box-shadow1);
+}
+
+.prettify-btn {
+  background-color: var(--background-color2);
+}
+
+.prettify-btn:hover,
+.play-btn:hover {
+  color: var(--color4);
+}
+
+.prettify-btn:active,
+.play-btn:active {
+  color: var(--color4);
+  background-color: var(--background-color11);
+  box-shadow: var(--box-shadow2);
+}
+
+.cm-content {
+  font-size: 16px;
+}
+
+.cm-editor {
+  padding: 35px 10px 10px;
+  width: 100%;
 }

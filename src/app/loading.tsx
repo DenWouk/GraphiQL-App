@@ -1,3 +1,7 @@
+'use client';
+
+import Loader from '@/components/loader/Loader';
+
 export default function Loading() {
-  return <h2 className="loader">Loading...</h2>;
+  return <Loader />;
 }

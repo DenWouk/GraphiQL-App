@@ -19,6 +19,7 @@ type authData = {
 export default function SignUpForm() {
   const context = useContext(LangContext);
   const [error, setError] = useState('');
+
   const {
     register,
     handleSubmit,
@@ -69,8 +70,10 @@ export default function SignUpForm() {
       )}
 
       <button type="submit">{languages.signUp[context.language]}</button>
+
       {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.haveAccount[context.language]}</p>
+
       <Link className="registration-link" href="authorization">
         {`${languages.signIn[context.language]} ❯`}
       </Link>

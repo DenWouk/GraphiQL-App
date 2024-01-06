@@ -16,8 +16,8 @@ export default function HeadersEditor() {
     <CodeMirror
       theme={'dark'}
       value={variables}
-      height="500px"
-      width="250px"
+      height="150px"
+      width="500px"
       onChange={onChange}
       extensions={[json()]}
     />

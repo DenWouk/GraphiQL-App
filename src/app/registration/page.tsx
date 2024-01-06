@@ -13,7 +13,7 @@ export default function Authorization() {
     const checkAuthStatus = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       if (authUser) {
-        router.replace('/editor');
+        router.replace('/');
       }
     };
 

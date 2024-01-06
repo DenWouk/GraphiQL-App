@@ -5,7 +5,7 @@ import StoreProvider from '@/lib/redux/storeProvider';
 import { LangContextProvider } from '@/lib/context/langContext';
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
-import AuthWrapper from '@/components/authProvider/auth';
+import AuthWrapper from '@/components/authWrapper/AuthWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
