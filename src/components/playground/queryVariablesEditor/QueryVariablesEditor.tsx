@@ -16,6 +16,7 @@ export default function QueryVariablesEditor() {
 
   return (
     <CodeMirror
+      data-testid="query-variables-editor"
       theme={'dark'}
       value={variables}
       height="500px"

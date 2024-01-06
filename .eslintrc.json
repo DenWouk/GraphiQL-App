@@ -45,5 +45,15 @@
       "pragma": "React",
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.tsx", "**/*.spec.tsx"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "testing-library/no-unnecessary-act": "off",
+        "testing-library/no-wait-for-multiple-assertions": "off"
+      }
+    }
+  ]
 }
