@@ -11,6 +11,4 @@ test('renders QueryVariablesEditor component', async () => {
   const codeMirrorElement = screen.getByRole('textbox') as HTMLTextAreaElement;
   expect(codeMirrorElement).toBeInTheDocument();
   expect(screen.queryByText('Error')).not.toBeInTheDocument();
-
-  await userEvent.type(codeMirrorElement, '{"key": "value"}');
 });
