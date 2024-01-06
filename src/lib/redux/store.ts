@@ -8,6 +8,7 @@ import queryVariables from './reducers/queryVariables';
 import httpHeaders from './reducers/httpHeaders';
 import graphqlApi from './reducers/graphqlApi';
 import { createWrapper } from 'next-redux-wrapper';
+import schema from './reducers/schema';
 
 export const rootReducer = combineReducers({
   authReducer,
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers({
   queryVariables,
   httpHeaders,
   graphqlApi,
+  schema,
 });
 
 export const setupStore = () => {
