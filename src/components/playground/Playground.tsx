@@ -13,12 +13,15 @@ import { setResponseValue } from '@/lib/redux/reducers/responseValue';
 import { addVariablesValues } from '@/utils/addVariablesValues';
 import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 import HeadersEditor from './headersEditor/HeadersEditor';
+import Documentation from './documentation/Documentation';
+import { useState } from 'react';
 
 interface Headers {
   [key: string]: string;
 }
 
 export default function Playground() {
+  const [isDocShown, setIsDocShown] = useState(false);
   const dispatch = useAppDispatch();
   const api = useAppSelector((state) => state.graphqlApi.graphqlApi);
   const responseValue = useAppSelector(
@@ -77,12 +80,18 @@ export default function Playground() {
     dispatch(setResponseValue(formattedQuery));
   };
 
+  const docsHandler = () => {
+    isDocShown ? setIsDocShown(false) : setIsDocShown(true);
+  };
   return (
     <div className="playground-wrapper">
       <ApiInput />
       <Button onClick={btnHandler}>play</Button>
       <Button onClick={prettifyHandler}>prettify</Button>
-
+      <div className="docs-button" onClick={docsHandler}>
+        Docs
+      </div>
+      {isDocShown && <Documentation />}
       <div className="editors-wrapper">
         <ResponseEditor />
         <RequestEditor />
