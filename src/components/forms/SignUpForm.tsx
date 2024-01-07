@@ -33,7 +33,7 @@ export default function SignUpForm() {
     const { email, password } = data;
     createUserWithEmailAndPassword(auth, email, password).catch((error) => {
       if (error.code === 'auth/email-already-in-use') {
-        setError('Email is already in use. Please sign in');
+        setError(languages.emailInUse[context.language]);
       } else {
         error.code;
       }

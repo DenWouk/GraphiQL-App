@@ -35,7 +35,7 @@ export default function SignInForm() {
 
     signInWithEmailAndPassword(auth, email, password).catch((error) => {
       if (error.code === 'auth/invalid-credential') {
-        setError('Invalid credential. Try again or sign up');
+        setError(languages.invalidCredentials[context.language]);
       } else {
         error.code;
       }
