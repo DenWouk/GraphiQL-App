@@ -1,3 +1,5 @@
+'use client';
+
 import './ApiInput.css';
 import { useAppDispatch } from '@/lib/redux/hooks/redux';
 import { setGraphqlApi } from '@/lib/redux/reducers/graphqlApi';
@@ -20,7 +22,7 @@ export const schemaQuery = `query {
 export default function ApiInput() {
   const dispatch = useAppDispatch();
 
-  const [value, setValue] = useState(localStorage.getItem('api-url') || '');
+  const [value, setValue] = useState(localStorage.getItem('graphql-api') || '');
   const [req, setReq] = useState(false);
 
   const makeRequest = async (query: string) => {
@@ -39,9 +41,14 @@ export default function ApiInput() {
     setValue(event.target.value);
     dispatch(setGraphqlApi(event.target.value));
     setReq(true);
-
-    localStorage.setItem('api-url', event.target.value);
   };
+
+  useEffect(() => {
+    makeRequest(schemaQuery).then((response) =>
+      dispatch(setSchema(response?.data?.__schema))
+    );
+    setReq(false);
+  }, []);
 
   useEffect(() => {
     if (req) {

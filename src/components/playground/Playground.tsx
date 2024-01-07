@@ -147,16 +147,16 @@ export default function Playground() {
         </div>
 
         <div className="response-editor-container">
+          <div className="docs-btn" onClick={docsHandler}>
+            DOCS
+          </div>
+          {isDocShown && <Documentation />}
+
           <div className="editor-wrapper">
             <h6 className="editor-title">RESPONSE VIEWIER (read only)</h6>
             <RequestEditor />
           </div>
         </div>
-
-        <div className="docs-button" onClick={docsHandler}>
-          Docs
-        </div>
-        {isDocShown && <Documentation />}
       </div>
     </div>
   );

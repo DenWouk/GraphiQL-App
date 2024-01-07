@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IntrospectionSchema } from 'graphql';
+
 const schemaSlice = createSlice({
   name: 'schemaState',
   initialState: {

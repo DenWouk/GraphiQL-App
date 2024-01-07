@@ -12,7 +12,7 @@ export default function Authorization() {
   useEffect(() => {
     const checkAuthStatus = async () => {
       if (authUser) {
-        router.replace('/');
+        router.replace('/editor');
       }
     };
 
