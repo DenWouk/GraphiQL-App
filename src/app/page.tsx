@@ -114,13 +114,6 @@ export default function About() {
             </p>
           </div>
         </div>
-
-        <div className="main-page-content2">
-          <h4 className="content-title">
-            {languages.aboutApp[context.language]}
-          </h4>
-          <p className="content-item-description"></p>
-        </div>
       </div>
     </main>
   );

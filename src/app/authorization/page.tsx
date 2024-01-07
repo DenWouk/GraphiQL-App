@@ -1,4 +1,6 @@
 'use client';
+
+import './authorization.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/lib/redux/hooks/redux';

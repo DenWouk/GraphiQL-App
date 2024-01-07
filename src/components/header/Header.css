@@ -17,7 +17,7 @@
 .header.sticky {
   z-index: 15;
   height: 35px;
-  font-size: 14px;
+  font-size: 16px;
   background-color: var(--background-color11);
   transition:
     0.4s height,
@@ -27,6 +27,7 @@
 
 .header-title {
   justify-self: flex-start;
+  font-size: 28px;
 }
 
 .nav {

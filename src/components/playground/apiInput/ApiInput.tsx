@@ -44,12 +44,6 @@ export default function ApiInput() {
   };
 
   useEffect(() => {
-    makeRequest(schemaQuery).then((response) =>
-      dispatch(setSchema(response?.data?.__schema))
-    );
-  }, []);
-
-  useEffect(() => {
     if (req) {
       makeRequest(schemaQuery).then((response) =>
         dispatch(setSchema(response?.data?.__schema))

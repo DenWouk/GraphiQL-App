@@ -12,3 +12,9 @@
   -webkit-appearance: none;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .language-select {
+    font-size: 14px;
+  }
+}

@@ -69,7 +69,9 @@ export default function SignUpForm() {
         <p className="error">{errors.confirmPassword.message}</p>
       )}
 
-      <button type="submit">{languages.signUp[context.language]}</button>
+      <button className="btn form-submit-btn" type="submit">
+        {languages.signUp[context.language]}
+      </button>
 
       {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.haveAccount[context.language]}</p>

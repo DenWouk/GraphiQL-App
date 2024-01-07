@@ -62,7 +62,9 @@ export default function SignInForm() {
       />
       {errors.password && <p className="error">{errors.password.message}</p>}
 
-      <button type="submit">{languages.signIn[context.language]}</button>
+      <button className="btn form-submit-btn" type="submit">
+        {languages.signIn[context.language]}
+      </button>
 
       {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.notAccount[context.language]}</p>
