@@ -10,12 +10,19 @@
   background-color: var(--background-color4);
   transition:
     0.4s height,
+    0.4s font-size,
     0.4s background-color ease-in-out;
 }
 
 .header.sticky {
+  z-index: 15;
   height: 35px;
+  font-size: 14px;
   background-color: var(--background-color11);
+  transition:
+    0.4s height,
+    0.4s font-size,
+    0.4s background-color ease-in-out;
 }
 
 .header-title {

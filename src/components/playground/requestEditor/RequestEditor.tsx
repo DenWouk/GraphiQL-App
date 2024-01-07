@@ -7,10 +7,9 @@ export default function RequestEditor() {
 
   return (
     <CodeMirror
+      className="response-editor"
       theme={'dark'}
       extensions={[json()]}
-      height="500px"
-      width="500px"
       value={requestJson}
       readOnly
     />

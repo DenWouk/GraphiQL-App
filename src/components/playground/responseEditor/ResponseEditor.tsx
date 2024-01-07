@@ -16,10 +16,9 @@ export default function ResponseEditor() {
 
   return (
     <CodeMirror
+      className="request-editor"
       theme={'dark'}
       value={value}
-      height="500px"
-      width="500px"
       onChange={onChange}
       extensions={[graphql(schema as unknown as GraphQLSchema)]}
     />

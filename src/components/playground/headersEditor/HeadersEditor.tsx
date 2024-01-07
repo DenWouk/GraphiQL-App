@@ -14,10 +14,9 @@ export default function HeadersEditor() {
 
   return (
     <CodeMirror
+      className="headers-editor"
       theme={'dark'}
       value={variables}
-      height="500px"
-      width="250px"
       onChange={onChange}
       extensions={[json()]}
     />

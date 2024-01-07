@@ -9,12 +9,12 @@ const commonSchema = yup.object().shape({
     .string()
     .required('Password is required')
     .min(8, 'Password should be at least 8 characters long')
-    .matches(/\d/, 'Password should contain at least one digit.')
-    .matches(/[A-Z]/, 'Password should contain at least one uppercase letter.')
-    .matches(/[a-z]/, 'Password should contain at least one lowercase letter.')
+    .matches(/\d/, 'Password should contain at least one digit')
+    .matches(/[A-Z]/, 'Password should contain at least one uppercase letter')
+    .matches(/[a-z]/, 'Password should contain at least one lowercase letter')
     .matches(
       /[!@#$%^&*(),.?":{}|<>]/,
-      'Password should contain at least one special character.'
+      'Password should contain at least one special character'
     ),
 });
 

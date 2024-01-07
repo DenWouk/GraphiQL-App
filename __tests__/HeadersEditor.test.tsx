@@ -1,10 +1,10 @@
 import { renderPage } from './Header.test';
 import { screen, act } from '@testing-library/react';
-import QueryVariablesEditor from '@/components/playground/queryVariablesEditor/QueryVariablesEditor';
+import HeadersEditor from '@/components/playground/headersEditor/HeadersEditor';
 
 test('renders QueryVariablesEditor component', async () => {
   act(() => {
-    renderPage(<QueryVariablesEditor />);
+    renderPage(<HeadersEditor />);
   });
 
   const codeMirrorElement = screen.getByRole('textbox') as HTMLTextAreaElement;

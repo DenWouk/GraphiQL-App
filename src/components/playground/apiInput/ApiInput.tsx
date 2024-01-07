@@ -1,7 +1,9 @@
+'use client';
+
+import './ApiInput.css';
 import { useAppDispatch } from '@/lib/redux/hooks/redux';
 import { setGraphqlApi } from '@/lib/redux/reducers/graphqlApi';
 import { setSchema } from '@/lib/redux/reducers/schema';
-import TextField from '@mui/material/TextField/TextField';
 import { useEffect, useState } from 'react';
 
 export const schemaQuery = `query {
@@ -18,9 +20,11 @@ export const schemaQuery = `query {
 }`;
 
 export default function ApiInput() {
-  const [value, setValue] = useState('');
-  const [req, setReq] = useState(false);
   const dispatch = useAppDispatch();
+
+  const [value, setValue] = useState(localStorage.getItem('graphql-api') || '');
+  const [req, setReq] = useState(false);
+
   const makeRequest = async (query: string) => {
     return fetch(value, {
       method: 'POST',
@@ -38,6 +42,14 @@ export default function ApiInput() {
     dispatch(setGraphqlApi(event.target.value));
     setReq(true);
   };
+
+  useEffect(() => {
+    makeRequest(schemaQuery).then((response) =>
+      dispatch(setSchema(response?.data?.__schema))
+    );
+    setReq(false);
+  }, []);
+
   useEffect(() => {
     if (req) {
       makeRequest(schemaQuery).then((response) =>
@@ -46,15 +58,16 @@ export default function ApiInput() {
       setReq(false);
     }
   }, [req]);
+
   return (
-    <TextField
-      sx={{ width: 500 }}
-      placeholder="Enter api"
-      id="outlined-basic"
-      variant="outlined"
-      size="small"
-      value={value}
-      onChange={inputHandler}
-    />
+    <div className="api-input-container">
+      <h6 className="api-input-title">API URL:</h6>
+      <input
+        className="api-input"
+        placeholder="Enter API URL"
+        value={value}
+        onChange={inputHandler}
+      />
+    </div>
   );
 }

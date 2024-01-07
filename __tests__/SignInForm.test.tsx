@@ -26,6 +26,27 @@ describe('SignInForm Component', () => {
     });
   });
 
+  it('displays an error message for invalid email on change', async () => {
+    act(() => {
+      renderPage(<SignInForm />);
+    });
+    const passwordInput = screen.getByPlaceholderText('password');
+    fireEvent.change(passwordInput, { target: { value: 'fgvjf' } });
+    await waitFor(() => {
+      expect((passwordInput as HTMLInputElement).value).toBe('fgvjf');
+      expect(() =>
+        screen.getByText('Password should be at least 8 characters long')
+      ).toThrow();
+    });
+    fireEvent.change(passwordInput, { target: { value: 'fgvjffdcr' } });
+    await waitFor(() => {
+      expect((passwordInput as HTMLInputElement).value).toBe('fgvjffdcr');
+      expect(() =>
+        screen.getByText('Password should contain at least one digit.')
+      ).toThrow();
+    });
+  });
+
   it('displays an error message for invalid data', async () => {
     act(() => {
       renderPage(<SignInForm />);

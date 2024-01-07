@@ -37,7 +37,7 @@ export default function SignInForm() {
       if (error.code === 'auth/invalid-credential') {
         setError('Invalid credential. Try again or sign up');
       } else {
-        console.log(error.code);
+        error.code;
       }
     });
   };
@@ -63,8 +63,10 @@ export default function SignInForm() {
       {errors.password && <p className="error">{errors.password.message}</p>}
 
       <button type="submit">{languages.signIn[context.language]}</button>
+
       {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.notAccount[context.language]}</p>
+
       <Link className="registration-link" href="registration">
         {`${languages.register[context.language]} ❯`}
       </Link>

@@ -17,7 +17,7 @@ import responseValueReducer, {
 import schemaReducer, { setSchema } from '@/lib/redux/reducers/schema';
 
 describe('authSlice reducer', () => {
-  it('должен обрабатывать действие setAuthUser', () => {
+  it('should handle the setAuthUser action', () => {
     const initialState = {
       authUser: null,
     };
@@ -26,7 +26,7 @@ describe('authSlice reducer', () => {
     expect(newState.authUser).toBe('user123');
   });
 
-  it('должен возвращать начальное состояние для несуществующего действия', () => {
+  it('shouldreturn the initial state for a non-existent action', () => {
     const initialState = {
       authUser: 'user123',
     };
@@ -40,117 +40,96 @@ describe('graphqlApiSlice reducer', () => {
   beforeEach(() => {
     jest.spyOn(window.localStorage.__proto__, 'setItem');
   });
-  it('должен обрабатывать действие setGraphqlApi и обновлять localStorage', () => {
+  it('should handle setGraphqlApi action and update localStorage', () => {
     const initialState = {
       graphqlApi: 'initialApi',
     };
 
     const updatedApi = 'updatedApi';
     const action = setGraphqlApi(updatedApi);
-
-    // Спецификация действия
     const result = graphqlApiReducer(initialState, action);
 
-    // Проверка, что состояние после действия соответствует ожиданиям
     expect(result.graphqlApi).toBe(updatedApi);
-
-    // Проверка, что localStorage был обновлен
-    expect(localStorage.setItem).toHaveBeenCalledWith('graphq-api', updatedApi);
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'graphql-api',
+      updatedApi
+    );
   });
 
-  it('должен возвращать начальное состояние для несуществующего действия', () => {
+  it('should return the initial state for a non-existent action', () => {
     const initialState = {
       graphqlApi: 'initialApi',
     };
 
     const action = { type: 'NON_EXISTING_ACTION' };
     const result = graphqlApiReducer(initialState, action);
-
-    // Проверка, что состояние не изменилось для несуществующего действия
     expect(result).toEqual(initialState);
   });
 });
 
 describe('httpHeadersSlice reducer', () => {
-  it('должен обрабатывать действие setHttpHeaders и обновлять localStorage', () => {
+  it('should handle the setHttpHeaders action and update localStorage', () => {
     const initialState = {
       httpHeaders: 'initialHeaders',
     };
 
     const updatedHeaders = 'updatedHeaders';
     const action = setHttpHeaders(updatedHeaders);
-
-    // Спецификация действия
     const result = httpHeadersReducer(initialState, action);
-
-    // Проверка, что состояние после действия соответствует ожиданиям
     expect(result.httpHeaders).toBe(updatedHeaders);
-
-    // Проверка, что localStorage был обновлен
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'http-headers',
       updatedHeaders
     );
   });
 
-  it('должен возвращать начальное состояние для несуществующего действия', () => {
+  it('should return the initial state for a non-existent action', () => {
     const initialState = {
       httpHeaders: 'initialHeaders',
     };
 
     const action = { type: 'NON_EXISTING_ACTION' };
     const result = httpHeadersReducer(initialState, action);
-
-    // Проверка, что состояние не изменилось для несуществующего действия
     expect(result).toEqual(initialState);
   });
 });
 
 describe('queryVariablesSlice reducer', () => {
-  it('должен обрабатывать действие setQueryVariables и обновлять состояние', () => {
+  it('should handle the setQueryVariables action and update the state', () => {
     const initialState = {
       queryVariables: 'initialQueryVariables',
     };
 
     const updatedVariables = 'updatedQueryVariables';
     const action = setQueryVariables(updatedVariables);
-
-    // Спецификация действия
     const result = queryVariablesReducer(initialState, action);
-
-    // Проверка, что состояние после действия соответствует ожиданиям
     expect(result.queryVariables).toBe(updatedVariables);
   });
 
-  it('должен возвращать начальное состояние для несуществующего действия', () => {
+  it('should return the initial state for a non-existent action', () => {
     const initialState = {
       queryVariables: 'initialQueryVariables',
     };
-
     const action = { type: 'NON_EXISTING_ACTION' };
     const result = queryVariablesReducer(initialState, action);
-
-    // Проверка, что состояние не изменилось для несуществующего действия
     expect(result).toEqual(initialState);
   });
 });
+
 describe('requestJsonSlice reducer', () => {
-  it('должен обрабатывать действие setRequestJson и обновлять состояние', () => {
+  it('should handle the setRequestJson action and update the state', () => {
     const initialState = {
       requestJson: 'initialRequestJson',
     };
 
     const updatedJson = 'updatedRequestJson';
     const action = setRequestJson(updatedJson);
-
-    // Спецификация действия
     const result = requestJsonReducer(initialState, action);
 
-    // Проверка, что состояние после действия соответствует ожиданиям
     expect(result.requestJson).toBe(updatedJson);
   });
 
-  it('должен возвращать начальное состояние для несуществующего действия', () => {
+  it('should return the initial state for a non-existent action', () => {
     const initialState = {
       requestJson: 'initialRequestJson',
     };
@@ -158,7 +137,6 @@ describe('requestJsonSlice reducer', () => {
     const action = { type: 'NON_EXISTING_ACTION' };
     const result = requestJsonReducer(initialState, action);
 
-    // Проверка, что состояние не изменилось для несуществующего действия
     expect(result).toEqual(initialState);
   });
 });
@@ -171,11 +149,8 @@ describe('responseValueSlice reducer', () => {
 
     const updatedValue = 'updatedResponseValue';
     const action = setResponseValue(updatedValue);
-
-    // Action specification
     const result = responseValueReducer(initialState, action);
 
-    // Check that the state after the action matches expectations
     expect(result.responseValue).toBe(updatedValue);
   });
 
@@ -187,15 +162,14 @@ describe('responseValueSlice reducer', () => {
     const action = { type: 'NON_EXISTING_ACTION' };
     const result = responseValueReducer(initialState, action);
 
-    // Check that the state did not change for a non-existing action
     expect(result).toEqual(initialState);
   });
 
   afterEach(() => {
-    // Clear the state after each test
     responseValueReducer(undefined, { type: 'NON_EXISTING_ACTION' });
   });
 });
+
 describe('schemaReducer', () => {
   it('should set the schema in the state', () => {
     const initialState = { schema: undefined };

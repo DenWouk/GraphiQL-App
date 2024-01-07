@@ -1,10 +1,11 @@
 'use client';
+
 import { ReactNode, useEffect, useState } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { setAuthUser } from '@/lib/redux/reducers/auth';
 import { auth } from '../../utils/firebase';
-import { Loader } from '@/components/loader/loader';
+import Loader from '../loader/Loader';
 
 const AuthWrapper = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
@@ -26,8 +27,9 @@ const AuthWrapper = ({ children }: { children: ReactNode }) => {
   }, [dispatch]);
 
   if (loading) {
-    return <Loader></Loader>;
+    return <Loader />;
   }
+
   return <>{children}</>;
 };
 

@@ -12,6 +12,7 @@ import { languages } from '@/languages/languages';
 import RegPageLink from '@/components/links/RegPageLink';
 import EditorPageLink from '@/components/links/EditorPageLink';
 import Image from 'next/image';
+import { Avatar } from '@mui/material';
 
 export default function About() {
   const dispatch = useAppDispatch();
@@ -35,8 +36,8 @@ export default function About() {
 
   return (
     <main className="main">
-      <div className="welcome-page-container">
-        <div className="welcome-page-links">
+      <div className="main-page-container">
+        <div className="main-page-links">
           {authUser ? (
             <EditorPageLink />
           ) : (
@@ -51,19 +52,22 @@ export default function About() {
           {languages.welcome[context.language]}
         </h2>
 
-        <h2 className="welcome-page-title">
-          {languages.aboutTeam[context.language]}
-        </h2>
+        <div className="main-page-content1">
+          <h4 className="content-title">
+            {languages.aboutTeam[context.language]}
+          </h4>
 
-        <div className="welcome-page-content1">
           <div className="content-item">
-            <Image
-              className="content-item-img"
-              src="/Viktoriya.jpg"
-              alt="Developer photo"
-              width={175}
-              height={175}
-            />
+            <Avatar sx={{ width: 150, height: 150 }}>
+              <Image
+                className="content-item-img"
+                src="/Viktoriya.jpg"
+                alt="Developer photo"
+                width={160}
+                height={160}
+              />
+            </Avatar>
+
             <h5 className="content-item-title">
               {languages.Viktoriya[context.language]}
             </h5>
@@ -73,13 +77,16 @@ export default function About() {
           </div>
 
           <div className="content-item">
-            <Image
-              className="content-item-img"
-              src="/Artem.jpg"
-              alt="Developer photo"
-              width={175}
-              height={175}
-            />
+            <Avatar sx={{ width: 150, height: 150 }}>
+              <Image
+                className="content-item-img"
+                src="/Artem.jpg"
+                alt="Developer photo"
+                width={170}
+                height={170}
+              />
+            </Avatar>
+
             <h5 className="content-item-title">
               {languages.Artem[context.language]}
             </h5>
@@ -89,13 +96,16 @@ export default function About() {
           </div>
 
           <div className="content-item">
-            <Image
-              className="content-item-img"
-              src="/Denis.jpg"
-              alt="Developer photo"
-              width={175}
-              height={175}
-            />
+            <Avatar sx={{ width: 150, height: 150 }}>
+              <Image
+                className="content-item-img"
+                src="/Denis.jpg"
+                alt="Developer photo"
+                width={150}
+                height={200}
+              />
+            </Avatar>
+
             <h5 className="content-item-title">
               {languages.Denis[context.language]}
             </h5>
@@ -105,7 +115,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="welcome-page-content2">
+        <div className="main-page-content2">
           <h4 className="content-title">
             {languages.aboutApp[context.language]}
           </h4>

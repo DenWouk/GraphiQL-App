@@ -19,8 +19,6 @@ export default function QueryVariablesEditor() {
       data-testid="query-variables-editor"
       theme={'dark'}
       value={variables}
-      height="500px"
-      width="250px"
       onChange={onChange}
       extensions={[json()]}
     />
