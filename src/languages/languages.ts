@@ -82,21 +82,25 @@ export const languages = {
   ArtemPart: [
     `Participation in the project:\n
     - Query editor\n
+    - Code highlights\n
     - Response viewer\n
     - Documentation/schema\n
     `,
     `Удзел у праекце: \n
     - Рэдактар запыту\n
+    - Падсветка кода\n
     - Манітор адказу\n
     - Дакументацыя/схема\n
     `,
     `Участие в проекте: \n
     - Редактор запроса\n
+    - Подсветка кода\n
     - Монитор ответа\n
     - Документация/схема\n
     `,
     `Участь у проекті: \n
     - Редактор запиту\n
+    - Підсвічування коду\n
     - Монітор відповіді\n
     - Документація/схема\n
     `,
@@ -105,26 +109,26 @@ export const languages = {
   DenPart: [
     `Participation in the project:\n
     - Welcome Page\n
-    - Header and Footer\n
-    - Variables and Headers\n
+    - Header & Footer\n
+    - Variables & Headers editors\n
     - Localization\n
     `,
     `Удзел у праекце: \n
     - Вітальная старонка\n
     - Хэдэр i Футэр\n
-    - Зменныя і загалоўкі\n
+    - Рэдактары зменных і загалоўкаў\n
     - Лакалізацыя\n
     `,
     `Участие в проекте: \n
     - Приветственная страница\n
     - Хедер и Футер\n
-    - Переменные и заголовки\n
+    - Редакторы переменных и заголовков\n
     - Локализация\n
     `,
     `Участь у проекті: \n
     - Вітальна сторінка\n
     - Хедер i Футер\n
-    - Змінні та заголовки\n
+    - Редактори змінних та заголовків\n
     - Локалізація\n
     `,
   ],

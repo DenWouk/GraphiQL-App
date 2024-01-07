@@ -6,8 +6,6 @@
 
 .api-input-title {
   position: absolute;
-  /* top: 10;
-  left: 20; */
   display: flex;
   justify-content: center;
   align-items: center;
