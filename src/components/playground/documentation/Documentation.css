@@ -3,6 +3,7 @@
   top: 0;
   right: 0;
   z-index: 10;
+  min-width: 280px;
   height: 100%;
   border: var(--border1);
   background-color: var(--background-color4);

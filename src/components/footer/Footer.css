@@ -120,3 +120,20 @@
   fill: var(--link-color1);
   text-decoration: underline;
 }
+
+@media (max-width: 600px) {
+  .gh-logo,
+  .rss-link {
+    margin-left: 3px;
+  }
+
+  .footer-item,
+  .gh-title {
+    font-size: 14px;
+  }
+
+  .footer-items,
+  .gh-link {
+    gap: 2px;
+  }
+}

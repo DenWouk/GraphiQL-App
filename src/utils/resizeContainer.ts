@@ -12,7 +12,7 @@ export function resizeContainer(
 
   let yCord = 0;
 
-  (resizableElement as HTMLDivElement).style.bottom = '45px';
+  (resizableElement as HTMLDivElement).style.bottom = '60px';
 
   function onMouseMoveTopResize(event: MouseEvent) {
     const dy = event.clientY - yCord;

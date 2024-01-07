@@ -19,13 +19,13 @@
 .query-editors-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 
 .response-editor-container {
   position: relative;
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 
@@ -67,6 +67,7 @@
   width: 100%;
   height: 100%;
   font-size: 16px;
+  overflow: auto;
 }
 
 .cm-editor {
@@ -83,7 +84,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  max-height: calc(100vh - 250px);
+  max-height: calc(100vh - 265px);
 }
 
 .resizer {
@@ -115,6 +116,9 @@
 .prettify-btn,
 .play-btn,
 .docs-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
   height: 28px;
   font-size: 16px;
@@ -154,5 +158,41 @@
   width: 65px;
   padding: 10px;
   border-radius: 3px;
+  background-color: var(--background-color2);
   cursor: pointer;
+}
+
+@media (max-width: 840px) {
+  .editor-title,
+  .headers-editor-title {
+    font-size: 12px;
+  }
+
+  .prettify-btn,
+  .play-btn,
+  .docs-btn {
+    width: 70px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .docs-btn {
+    width: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .editors-container {
+    flex-direction: column;
+  }
+
+  .query-editors-container,
+  .response-editor-container {
+    width: 100%;
+    height: 50%;
+  }
+
+  .resizable-container {
+    max-height: calc(50vh - 175px);
+  }
 }

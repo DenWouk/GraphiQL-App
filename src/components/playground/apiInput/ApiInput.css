@@ -24,3 +24,14 @@
   color: var(--color3);
   background-color: var(--background-color7);
 }
+
+@media (max-width: 840px) {
+  .api-input-title {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .api-input {
+    padding: 0 10px 0 75px;
+  }
+}

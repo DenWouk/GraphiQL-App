@@ -47,7 +47,6 @@ export default function ApiInput() {
     makeRequest(schemaQuery).then((response) =>
       dispatch(setSchema(response?.data?.__schema))
     );
-    setReq(false);
   }, []);
 
   useEffect(() => {
