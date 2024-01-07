@@ -17,7 +17,7 @@
 .header.sticky {
   z-index: 15;
   height: 35px;
-  font-size: 14px;
+  font-size: 16px;
   background-color: var(--background-color11);
   transition:
     0.4s height,
@@ -27,6 +27,7 @@
 
 .header-title {
   justify-self: flex-start;
+  font-size: 28px;
 }
 
 .nav {
@@ -49,6 +50,7 @@
   border-radius: 3px;
   border: 1px solid #313131;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .nav-link {
@@ -56,12 +58,30 @@
   border: 1px solid transparent;
 }
 
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 .user-name {
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 
 .header-btns {
   display: flex;
   gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .header-title,
+  .user-name {
+    width: 0;
+    visibility: hidden;
+  }
+
+  .nav-link,
+  .nav-btn {
+    font-size: 14px;
+  }
 }

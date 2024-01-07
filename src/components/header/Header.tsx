@@ -18,6 +18,7 @@ export default function Header() {
 
   const userSignOut = () => {
     signOut(auth).catch((error) => error);
+    localStorage.clear();
   };
 
   const isSticky = () => {

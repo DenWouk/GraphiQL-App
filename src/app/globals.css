@@ -87,11 +87,13 @@ a {
   margin: 0 auto;
   padding: 30px;
 }
+
 .submit .input-box {
   display: flex;
   flex-direction: row;
   gap: 8px;
 }
+
 .submit input,
 .submit select {
   padding: 10px;
@@ -101,10 +103,12 @@ a {
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 }
+
 .submit input:focus {
   border: 3px #007bff solid;
   box-shadow: 0 0 8px rgb(0 123 255 / 50%);
 }
+
 .submit .error {
   color: #ff0000;
   font-weight: 700;

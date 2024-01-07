@@ -33,7 +33,7 @@ export default function SignUpForm() {
     const { email, password } = data;
     createUserWithEmailAndPassword(auth, email, password).catch((error) => {
       if (error.code === 'auth/email-already-in-use') {
-        setError('Email is already in use. Please sign in');
+        setError(languages.emailInUse[context.language]);
       } else {
         error.code;
       }
@@ -69,7 +69,9 @@ export default function SignUpForm() {
         <p className="error">{errors.confirmPassword.message}</p>
       )}
 
-      <button type="submit">{languages.signUp[context.language]}</button>
+      <button className="btn form-submit-btn" type="submit">
+        {languages.signUp[context.language]}
+      </button>
 
       {errors ? <p className="error">{error}</p> : ''}
       <p>{languages.haveAccount[context.language]}</p>
