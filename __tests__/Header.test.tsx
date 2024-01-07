@@ -21,8 +21,22 @@ export const renderPage = async (
 describe('Tests for the Header component', () => {
   it('Renders the relevant data', () => {
     renderPage(<Header />);
-    expect(
-      screen.getByRole('heading', { name: 'GraphiQL' })
-    ).toBeInTheDocument();
+    expect(screen.getByText('GraphiQL')).toBeInTheDocument();
+    const signInButton = screen.getByText('Sign In');
+    expect(signInButton).toBeInTheDocument();
+
+    // Найти селект по data-testid
+    const languageSelect = screen.getByTestId('language-select');
+    expect(languageSelect).toBeInTheDocument();
+
+    const enOption = screen.getByText(/EN/i);
+    const byOption = screen.getByText(/BY/i);
+    const ruOption = screen.getByText(/RU/i);
+    const uaOption = screen.getByText(/UA/i);
+
+    expect(enOption).toBeInTheDocument();
+    expect(byOption).toBeInTheDocument();
+    expect(ruOption).toBeInTheDocument();
+    expect(uaOption).toBeInTheDocument();
   });
 });

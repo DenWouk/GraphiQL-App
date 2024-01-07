@@ -13,9 +13,8 @@ export function LanguageSelector() {
   }
 
   return (
-    // languages option values: EN=0, BY=1, RU=2 UA=3;
-
     <select
+      data-testid="language-select"
       className="language-select"
       name="select"
       value={context.language}
