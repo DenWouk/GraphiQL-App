@@ -35,7 +35,7 @@ export default function SignUpForm() {
       if (error.code === 'auth/email-already-in-use') {
         setError('Email is already in use. Please sign in');
       } else {
-        console.log(error.code);
+        error.code;
       }
     });
   };

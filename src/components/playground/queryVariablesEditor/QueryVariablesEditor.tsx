@@ -16,10 +16,9 @@ export default function QueryVariablesEditor() {
 
   return (
     <CodeMirror
+      className="variables-editor"
       theme={'dark'}
       value={variables}
-      height="150px"
-      width="500px"
       onChange={onChange}
       extensions={[json()]}
     />

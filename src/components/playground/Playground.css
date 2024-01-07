@@ -1,35 +1,105 @@
-.playground-wrapper {
+.playground {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2px;
   width: 100%;
-  margin: 20px 20px 45px;
+  height: calc(100vh - 85px);
+  padding: 20px;
 }
 
-.request-response-editors,
-.variables-headers-editors {
+.editors-container {
   display: flex;
   gap: 2px;
   width: 100%;
+  height: calc(100% - 42px);
 }
 
-.editor {
+.query-editors-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.response-editor-container {
+  width: 100%;
+  height: 100%;
+}
+
+.editor-wrapper {
   position: relative;
-  width: 50%;
+  display: flex;
+  height: 100%;
 }
 
-.editor-title-1,
-.editor-title-2,
-.editor-title-3,
-.editor-title-4 {
+.variables-editor-wrapper,
+.headers-editor-wrapper {
+  height: auto;
+}
+
+.editor-title {
   position: absolute;
   left: 20px;
   top: 10px;
   z-index: 5;
   font-size: 14px;
   color: var(--color5);
+  user-select: none;
+}
+
+.headers-editor-title {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 5;
+  font-size: 14px;
+  color: var(--color5);
+  user-select: none;
+}
+
+.request-editor,
+.variables-editor,
+.headers-editor,
+.response-editor {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
+
+.cm-editor {
+  padding: 35px 10px 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.cm-gutters {
+  user-select: none;
+}
+
+.resizable-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 250px);
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 45%;
+  height: 35px;
+  cursor: row-resize;
+}
+
+.resizer-variables-editor {
+  left: 0;
+}
+
+.resizer-headers-editor {
+  right: 0;
 }
 
 .playground-controls {
@@ -67,13 +137,4 @@
   color: var(--color4);
   background-color: var(--background-color11);
   box-shadow: var(--box-shadow2);
-}
-
-.cm-content {
-  font-size: 16px;
-}
-
-.cm-editor {
-  padding: 35px 10px 10px;
-  width: 100%;
 }

@@ -17,7 +17,7 @@ export default function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
 
   const userSignOut = () => {
-    signOut(auth).catch((error) => console.log(error));
+    signOut(auth).catch((error) => error);
   };
 
   const isSticky = () => {
@@ -29,6 +29,7 @@ export default function Header() {
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
+
     return () => {
       window.removeEventListener('scroll', isSticky);
     };

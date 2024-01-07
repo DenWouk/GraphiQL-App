@@ -25,7 +25,5 @@ export function addVariablesValues(
     });
   }
 
-  console.log(query);
-
   return query;
 }

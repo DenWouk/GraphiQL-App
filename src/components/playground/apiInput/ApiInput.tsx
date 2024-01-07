@@ -8,6 +8,7 @@ export default function Playground() {
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setGraphqlApi(event.target.value));
   };
+
   return (
     <input
       className="api-input"

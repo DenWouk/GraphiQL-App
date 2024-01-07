@@ -37,7 +37,7 @@ export default function SignInForm() {
       if (error.code === 'auth/invalid-credential') {
         setError('Invalid credential. Try again or sign up');
       } else {
-        console.log(error.code);
+        error.code;
       }
     });
   };
