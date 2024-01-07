@@ -10,11 +10,14 @@ export default function Playground() {
   };
 
   return (
-    <input
-      className="api-input"
-      placeholder="Enter API URL"
-      value={api}
-      onChange={inputHandler}
-    />
+    <div className="api-input-container">
+      <h6 className="api-input-title">API URL:</h6>
+      <input
+        className="api-input"
+        placeholder="Enter API URL"
+        value={api}
+        onChange={inputHandler}
+      />
+    </div>
   );
 }
