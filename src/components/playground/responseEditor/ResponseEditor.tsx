@@ -1,11 +1,13 @@
 import CodeMirror from '@uiw/react-codemirror';
-import { json } from '@codemirror/lang-json';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks/redux';
 import { useCallback } from 'react';
 import { setResponseValue } from '@/lib/redux/reducers/responseValue';
+import { graphql } from 'cm6-graphql';
+import { GraphQLSchema } from 'graphql';
 
 export default function ResponseEditor() {
   const value = useAppSelector((state) => state.responseValue.responseValue);
+  const schema = useAppSelector((state) => state.schema.schema);
   const dispatch = useAppDispatch();
 
   const onChange = useCallback((val: string) => {
@@ -18,7 +20,7 @@ export default function ResponseEditor() {
       theme={'dark'}
       value={value}
       onChange={onChange}
-      extensions={[json()]}
+      extensions={[graphql(schema as unknown as GraphQLSchema)]}
     />
   );
 }

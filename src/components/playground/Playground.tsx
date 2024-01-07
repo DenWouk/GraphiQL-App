@@ -14,12 +14,15 @@ import QueryVariablesEditor from './queryVariablesEditor/QueryVariablesEditor';
 import HeadersEditor from './headersEditor/HeadersEditor';
 import { useEffect, useRef } from 'react';
 import { resizeContainer } from '@/utils/resizeContainer';
+import Documentation from './documentation/Documentation';
+import { useState } from 'react';
 
 interface Headers {
   [key: string]: string;
 }
 
 export default function Playground() {
+  const [isDocShown, setIsDocShown] = useState(false);
   const dispatch = useAppDispatch();
   const api = useAppSelector((state) => state.graphqlApi.graphqlApi);
   const responseValue = useAppSelector(
@@ -86,15 +89,17 @@ export default function Playground() {
         }
       );
     } catch {
-      makeRequest(addVariablesValues(responseValue, {})).then((response) => {
-        dispatch(setRequestJson(JSON.stringify(response, undefined, 2)));
-      });
+      makeRequest(addVariablesValues(responseValue, {}));
     }
   };
 
   const prettifyHandler = () => {
     const formattedQuery = toPrettify(responseValue);
     dispatch(setResponseValue(formattedQuery));
+  };
+
+  const docsHandler = () => {
+    isDocShown ? setIsDocShown(false) : setIsDocShown(true);
   };
 
   return (
@@ -147,6 +152,11 @@ export default function Playground() {
             <RequestEditor />
           </div>
         </div>
+
+        <div className="docs-button" onClick={docsHandler}>
+          Docs
+        </div>
+        {isDocShown && <Documentation />}
       </div>
     </div>
   );

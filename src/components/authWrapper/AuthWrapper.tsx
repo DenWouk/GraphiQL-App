@@ -27,8 +27,9 @@ const AuthWrapper = ({ children }: { children: ReactNode }) => {
   }, [dispatch]);
 
   if (loading) {
-    return <Loader></Loader>;
+    return <Loader />;
   }
+
   return <>{children}</>;
 };
 
