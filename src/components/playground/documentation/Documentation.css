@@ -1,0 +1,32 @@
+.documentation-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  min-width: 280px;
+  height: 100%;
+  border: var(--border1);
+  background-color: var(--background-color4);
+  overflow: auto;
+}
+
+.queries-title {
+  padding: 10px 20px 0 20px;
+  color: var(--color7);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.queries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  list-style-type: none;
+}
+
+.query-item {
+  color: var(--color6);
+}
